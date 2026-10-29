@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ParkCowboy - Condomínio & Vida Mais Fácil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --dark-green: #0d3b2e;
@@ -17,200 +20,1352 @@
             --text-gray: #5a6577;
             --text-light: #8a95a5;
             --white: #ffffff;
-            --card-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            --card-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
             --border-radius: 12px;
             --border-radius-lg: 16px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
         /* ===== NAVBAR ===== */
-        .navbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 60px; background: var(--white); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #f0f0f0; }
-        .navbar-logo { display: flex; align-items: center; gap: 10px; }
-        .navbar-logo .logo-icon { width: 42px; height: 42px; background: var(--dark-green); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
-        .navbar-logo .logo-icon svg { width: 24px; height: 24px; }
-        .navbar-logo .logo-text { display: flex; flex-direction: column; }
-        .navbar-logo .logo-text .brand { font-size: 22px; font-weight: 800; color: var(--dark-green); line-height: 1.1; }
-        .navbar-logo .logo-text .brand span { color: var(--accent-green); }
-        .navbar-logo .logo-text .tagline { font-size: 9px; font-weight: 600; color: var(--accent-green); letter-spacing: 0.5px; margin-top: 2px; }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 60px;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #f0f0f0;
+        }
 
-        .navbar-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-        .navbar-links a { font-size: 14px; font-weight: 500; color: var(--text-gray); transition: color 0.3s; position: relative; }
-        .navbar-links a:hover, .navbar-links a.active { color: var(--dark-green); }
-        .navbar-links a.active::after { content: ''; position: absolute; bottom: -6px; left: 0; right: 0; height: 2px; background: var(--dark-green); border-radius: 2px; }
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-        .navbar-actions { display: flex; align-items: center; gap: 16px; }
-        .btn-enter { display: flex; align-items: center; gap: 8px; padding: 10px 24px; background: var(--dark-green); color: var(--white); border: none; border-radius: 50px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
-        .btn-enter:hover { background: var(--dark-green-deep); transform: translateY(-1px); }
-        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-        .mobile-menu-btn span { display: block; width: 24px; height: 2px; background: var(--text-dark); margin: 5px 0; transition: all 0.3s; }
+        .navbar-logo .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--dark-green);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .navbar-logo .logo-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .navbar-logo .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar-logo .logo-text .brand {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark-green);
+            line-height: 1.1;
+        }
+
+        .navbar-logo .logo-text .brand span {
+            color: var(--accent-green);
+        }
+
+        .navbar-logo .logo-text .tagline {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--accent-green);
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .navbar-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-gray);
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .navbar-links a:hover,
+        .navbar-links a.active {
+            color: var(--dark-green);
+        }
+
+        .navbar-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--dark-green);
+            border-radius: 2px;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .navbar-actions .search-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .navbar-actions .search-btn:hover {
+            color: var(--dark-green);
+        }
+
+        .btn-enter {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: var(--dark-green);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-enter:hover {
+            background: var(--dark-green-deep);
+            transform: translateY(-1px);
+        }
+
+        .btn-enter svg {
+            width: 16px;
+            height: 16px;
+        }
 
         /* ===== HERO SECTION ===== */
-        .hero { position: relative; min-height: 600px; background: var(--dark-green); overflow: hidden; display: flex; align-items: center; }
-        .hero-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80') center/cover no-repeat; opacity: 0.4; }
-        .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(13,59,46,0.95) 0%, rgba(13,59,46,0.7) 50%, rgba(13,59,46,0.3) 100%); }
-        .hero-content { position: relative; z-index: 2; padding: 80px 60px; max-width: 650px; }
-        
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(78,205,196,0.15); border: 1px solid rgba(78,205,196,0.3); padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600; color: var(--accent-green); margin-bottom: 20px; }
-        .hero-title { font-size: 52px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
-        .hero-title .highlight { color: var(--accent-green); }
-        .hero-description { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 32px; max-width: 480px; }
+        .hero {
+            position: relative;
+            min-height: 600px;
+            background: var(--dark-green);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
 
-        .btn-explore { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; background: var(--accent-green); color: var(--dark-green); border: none; border-radius: 50px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
-        .btn-explore:hover { background: var(--accent-green-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(78,205,196,0.3); }
-        .btn-explore svg { width: 18px; height: 18px; transition: transform 0.3s; }
-        .btn-explore:hover svg { transform: translateX(4px); }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80') center/cover no-repeat;
+            opacity: 0.4;
+        }
 
-        .hero-handwritten { position: absolute; right: 80px; bottom: 80px; z-index: 2; font-family: 'Caveat', cursive; font-size: 32px; color: var(--white); text-align: center; line-height: 1.3; transform: rotate(-3deg); }
-        .hero-handwritten::after { content: ''; display: block; width: 80px; height: 3px; background: var(--accent-green); margin: 8px auto 0; border-radius: 2px; }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(13, 59, 46, 0.95) 0%, rgba(13, 59, 46, 0.7) 50%, rgba(13, 59, 46, 0.3) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 80px 60px;
+            max-width: 650px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(78, 205, 196, 0.15);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        .hero-label {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-green);
+            margin-bottom: 16px;
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .highlight {
+            color: var(--accent-green);
+        }
+
+        .hero-description {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-feature-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(78, 205, 196, 0.15);
+            border: 1.5px solid rgba(78, 205, 196, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .hero-feature-icon svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent-green);
+        }
+
+        .hero-feature-text {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.3;
+            max-width: 120px;
+        }
+
+        .btn-explore {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--accent-green);
+            color: var(--dark-green);
+            border: none;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-explore:hover {
+            background: var(--accent-green-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);
+        }
+
+        .btn-explore svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .btn-explore:hover svg {
+            transform: translateX(4px);
+        }
+
+        .hero-handwritten {
+            position: absolute;
+            right: 80px;
+            bottom: 80px;
+            z-index: 2;
+            font-family: 'Caveat', cursive;
+            font-size: 32px;
+            color: var(--white);
+            text-align: center;
+            line-height: 1.3;
+            transform: rotate(-3deg);
+        }
+
+        .hero-handwritten::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--accent-green);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
 
         /* ===== FEATURES SECTION ===== */
-        .features-section { padding: 80px 60px; display: grid; grid-template-columns: 340px 1fr; gap: 40px; align-items: start; }
-        .features-header { position: sticky; top: 100px; }
-        .section-line { width: 32px; height: 3px; background: var(--dark-green); border-radius: 2px; margin-bottom: 20px; }
-        .features-header h2 { font-size: 36px; font-weight: 800; color: var(--text-dark); line-height: 1.2; margin-bottom: 16px; }
-        .features-header p { font-size: 15px; color: var(--text-gray); line-height: 1.6; margin-bottom: 28px; }
-        .btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: transparent; color: var(--dark-green); border: 2px solid var(--dark-green); border-radius: 50px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
-        .btn-outline:hover { background: var(--dark-green); color: var(--white); }
-        .btn-outline svg { width: 16px; height: 16px; transition: transform 0.3s; }
-        .btn-outline:hover svg { transform: translateX(4px); }
+        .features-section {
+            padding: 80px 60px;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
 
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .feature-card { background: var(--white); border: 1px solid #f0f0f0; border-radius: var(--border-radius-lg); padding: 28px; transition: all 0.3s; cursor: pointer; position: relative; }
-        .feature-card:hover { box-shadow: var(--card-shadow); transform: translateY(-4px); border-color: transparent; }
-        .feature-card-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-        .feature-card-icon.green { background: #e0f5f3; color: #2a9d8f; }
-        .feature-card-icon.blue { background: #e8f0fe; color: #4a6cf7; }
-        .feature-card-icon.orange { background: #fef0e0; color: #e8873a; }
-        .feature-card-icon.pink { background: #fde0e8; color: #e84a6f; }
-        .feature-card-icon.yellow { background: #fef9e0; color: #d4a843; }
-        .feature-card-icon.cyan { background: #e0f5f8; color: #3ab0c4; }
-        .feature-card-icon svg { width: 22px; height: 22px; }
-        .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
-        .feature-card p { font-size: 13px; color: var(--text-gray); line-height: 1.5; margin-bottom: 16px; }
-        .feature-card .card-arrow { position: absolute; bottom: 24px; right: 24px; width: 24px; height: 24px; color: var(--text-light); transition: all 0.3s; }
-        .feature-card:hover .card-arrow { color: var(--dark-green); transform: translateX(4px); }
+        .features-header {
+            position: sticky;
+            top: 100px;
+        }
+
+        .section-line {
+            width: 32px;
+            height: 3px;
+            background: var(--dark-green);
+            border-radius: 2px;
+            margin-bottom: 20px;
+        }
+
+        .features-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .features-header p {
+            font-size: 15px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--dark-green);
+            border: 2px solid var(--dark-green);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--dark-green);
+            color: var(--white);
+        }
+
+        .btn-outline svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s;
+        }
+
+        .btn-outline:hover svg {
+            transform: translateX(4px);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border: 1px solid #f0f0f0;
+            border-radius: var(--border-radius-lg);
+            padding: 28px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--card-shadow);
+            transform: translateY(-4px);
+            border-color: transparent;
+        }
+
+        .feature-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .feature-card-icon.green {
+            background: #e0f5f3;
+            color: #2a9d8f;
+        }
+
+        .feature-card-icon.blue {
+            background: #e8f0fe;
+            color: #4a6cf7;
+        }
+
+        .feature-card-icon.orange {
+            background: #fef0e0;
+            color: #e8873a;
+        }
+
+        .feature-card-icon.pink {
+            background: #fde0e8;
+            color: #e84a6f;
+        }
+
+        .feature-card-icon.yellow {
+            background: #fef9e0;
+            color: #d4a843;
+        }
+
+        .feature-card-icon.cyan {
+            background: #e0f5f8;
+            color: #3ab0c4;
+        }
+
+        .feature-card-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .feature-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            font-size: 13px;
+            color: var(--text-gray);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .feature-card .card-arrow {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            width: 24px;
+            height: 24px;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover .card-arrow {
+            color: var(--dark-green);
+            transform: translateX(4px);
+        }
 
         /* ===== PRODUCT HIGHLIGHT ===== */
-        .product-section { padding: 40px 60px 80px; }
-        .product-card { display: grid; grid-template-columns: 1fr 1fr; background: var(--light-green-bg); border-radius: var(--border-radius-lg); overflow: hidden; }
-        .product-image { background: #f5f0e8; padding: 40px; display: flex; align-items: center; justify-content: center; position: relative; min-height: 420px; }
-        .mockup-tablet { width: 180px; height: 260px; background: #2a2a2a; border-radius: 16px; padding: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); z-index: 2; }
-        .mockup-tablet-screen { width: 100%; height: 100%; background: var(--white); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; align-items: center; }
-        .mockup-tablet-screen .kit-icon { width: 36px; height: 36px; background: var(--dark-green); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
-        .mockup-tablet-screen .kit-icon svg { width: 20px; height: 20px; color: var(--white); }
-        .mockup-tablet-screen h4 { font-size: 14px; font-weight: 700; color: var(--dark-green); margin-bottom: 2px; }
-        .mockup-tablet-screen .kit-sub { font-size: 8px; color: var(--text-light); margin-bottom: 12px; }
-        .mockup-tablet-screen .kit-list { width: 100%; font-size: 9px; color: var(--text-gray); }
-        .mockup-tablet-screen .kit-list div { display: flex; align-items: center; gap: 6px; padding: 3px 0; }
-        .mockup-tablet-screen .kit-list div::before { content: '✓'; color: var(--accent-green); font-weight: 700; font-size: 10px; }
-        
-        .mockup-phone { width: 90px; height: 180px; background: #2a2a2a; border-radius: 16px; padding: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-left: -20px; margin-top: 40px; }
-        .mockup-phone-screen { width: 100%; height: 100%; background: var(--white); border-radius: 10px; padding: 8px; }
-        .mockup-phone-screen .phone-bar { height: 4px; background: var(--light-green-bg); border-radius: 2px; margin-bottom: 6px; }
-        .mockup-phone-screen .phone-bar:nth-child(2) { width: 80%; }
-        .mockup-phone-screen .phone-bar:nth-child(3) { width: 60%; }
-        .mockup-phone-screen .phone-bar:nth-child(4) { width: 90%; margin-top: 12px; }
-        .mockup-phone-screen .phone-bar:nth-child(5) { width: 70%; }
+        .product-section {
+            padding: 40px 60px 80px;
+        }
 
-        .product-info { padding: 50px; display: flex; flex-direction: column; justify-content: center; }
-        .product-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-green); margin-bottom: 12px; }
-        .product-info h2 { font-size: 32px; font-weight: 800; color: var(--text-dark); margin-bottom: 12px; }
-        .product-info > p { font-size: 15px; color: var(--text-gray); line-height: 1.6; margin-bottom: 28px; }
-        .product-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
-        .product-checklist li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-dark); list-style: none; }
-        .product-checklist li .check-icon { width: 22px; height: 22px; background: var(--dark-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .product-checklist li .check-icon svg { width: 12px; height: 12px; color: var(--white); }
+        .product-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--light-green-bg);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+        }
 
-        .product-actions { display: flex; align-items: center; gap: 24px; }
-        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; background: var(--dark-green); color: var(--white); border: none; border-radius: 50px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
-        .btn-primary:hover { background: var(--dark-green-deep); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,59,46,0.3); }
-        .btn-primary svg { width: 18px; height: 18px; transition: transform 0.3s; }
-        .btn-primary:hover svg { transform: translateX(4px); }
+        .product-image {
+            background: #f5f0e8;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 420px;
+        }
+
+        .product-mockup {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .mockup-tablet {
+            width: 180px;
+            height: 260px;
+            background: #2a2a2a;
+            border-radius: 16px;
+            padding: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+        }
+
+        .mockup-tablet-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mockup-tablet-screen .kit-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--dark-green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        .mockup-tablet-screen .kit-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--white);
+        }
+
+        .mockup-tablet-screen h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 2px;
+            text-align: center;
+        }
+
+        .mockup-tablet-screen .kit-sub {
+            font-size: 8px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .mockup-tablet-screen .kit-list {
+            width: 100%;
+            font-size: 9px;
+            color: var(--text-gray);
+        }
+
+        .mockup-tablet-screen .kit-list div {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 0;
+        }
+
+        .mockup-tablet-screen .kit-list div::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 10px;
+        }
+
+        .mockup-phone {
+            width: 90px;
+            height: 180px;
+            background: #2a2a2a;
+            border-radius: 16px;
+            padding: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-left: -20px;
+            margin-top: 40px;
+        }
+
+        .mockup-phone-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            border-radius: 10px;
+            padding: 8px;
+        }
+
+        .mockup-phone-screen .phone-bar {
+            height: 4px;
+            background: var(--light-green-bg);
+            border-radius: 2px;
+            margin-bottom: 6px;
+        }
+
+        .mockup-phone-screen .phone-bar:nth-child(2) {
+            width: 80%;
+        }
+
+        .mockup-phone-screen .phone-bar:nth-child(3) {
+            width: 60%;
+        }
+
+        .mockup-phone-screen .phone-bar:nth-child(4) {
+            width: 90%;
+            margin-top: 12px;
+        }
+
+        .mockup-phone-screen .phone-bar:nth-child(5) {
+            width: 70%;
+        }
+
+        .mockup-phone-screen .phone-bar:nth-child(6) {
+            width: 85%;
+        }
+
+        .mockup-paper {
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 120px;
+            height: 160px;
+            background: var(--white);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 12px;
+            transform: rotate(-8deg);
+            z-index: 3;
+        }
+
+        .mockup-paper .paper-line {
+            height: 3px;
+            background: #e8e8e8;
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+
+        .mockup-paper .paper-line:nth-child(2) {
+            width: 70%;
+        }
+
+        .mockup-paper .paper-line:nth-child(3) {
+            width: 85%;
+        }
+
+        .mockup-paper .paper-line:nth-child(4) {
+            width: 60%;
+            margin-top: 16px;
+        }
+
+        .mockup-paper .paper-line:nth-child(5) {
+            width: 75%;
+        }
+
+        .product-info {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-green);
+            margin-bottom: 12px;
+        }
+
+        .product-info h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .product-info>p {
+            font-size: 15px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .product-checklist {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .product-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-dark);
+            list-style: none;
+        }
+
+        .product-checklist li .check-icon {
+            width: 22px;
+            height: 22px;
+            background: var(--dark-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .product-checklist li .check-icon svg {
+            width: 12px;
+            height: 12px;
+            color: var(--white);
+        }
+
+        .product-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--dark-green);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-green-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(13, 59, 46, 0.3);
+        }
+
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover svg {
+            transform: translateX(4px);
+        }
+
+        .etsy-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .etsy-badge .etsy-text {
+            font-family: 'Caveat', cursive;
+            font-size: 16px;
+            color: var(--text-gray);
+            transform: rotate(-5deg);
+        }
+
+        .etsy-badge .etsy-icon {
+            width: 44px;
+            height: 44px;
+            background: #f1641e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(241, 100, 30, 0.3);
+        }
 
         /* ===== WHY CHOOSE SECTION ===== */
-        .why-section { padding: 80px 60px; display: grid; grid-template-columns: 340px 1fr; gap: 40px; align-items: start; }
-        .why-header h2 { font-size: 36px; font-weight: 800; color: var(--text-dark); line-height: 1.2; margin-bottom: 16px; }
-        .why-header p { font-size: 15px; color: var(--text-gray); line-height: 1.6; margin-bottom: 28px; }
-        .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .why-card { text-align: center; padding: 32px 20px; border-right: 1px solid #f0f0f0; }
-        .why-card:last-child { border-right: none; }
-        .why-card-icon { width: 56px; height: 56px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; }
-        .why-card-icon svg { width: 40px; height: 40px; color: var(--dark-green); }
-        .why-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
-        .why-card p { font-size: 13px; color: var(--text-gray); line-height: 1.5; }
+        .why-section {
+            padding: 80px 60px;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .why-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .why-header p {
+            font-size: 15px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 32px 20px;
+            border-right: 1px solid #f0f0f0;
+        }
+
+        .why-card:last-child {
+            border-right: none;
+        }
+
+        .why-card-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .why-card-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--dark-green);
+        }
+
+        .why-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .why-card p {
+            font-size: 13px;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
 
         /* ===== TESTIMONIALS SECTION ===== */
-        .testimonials-section { background: var(--dark-green); padding: 80px 60px; display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start; }
-        .testimonials-header h2 { font-size: 32px; font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
-        .testimonials-header p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 28px; }
-        .btn-light { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--accent-green); color: var(--dark-green); border: none; border-radius: 50px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
-        .btn-light:hover { background: var(--accent-green-light); transform: translateY(-2px); }
-        
-        .testimonials-track { display: flex; gap: 20px; }
-        .testimonial-card { min-width: calc(33.333% - 14px); background: var(--white); border-radius: var(--border-radius-lg); padding: 28px; flex-shrink: 0; }
-        .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; background: #e8e8e8; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; }
-        .testimonial-card blockquote { font-size: 14px; color: var(--text-gray); line-height: 1.6; margin-bottom: 20px; font-style: italic; }
-        .testimonial-card .author-name { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
-        .testimonial-card .author-role { font-size: 12px; color: var(--text-light); }
+        .testimonials-section {
+            background: var(--dark-green);
+            padding: 80px 60px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .testimonials-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .testimonials-header p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .btn-light {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--accent-green);
+            color: var(--dark-green);
+            border: none;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-light:hover {
+            background: var(--accent-green-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-light svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s;
+        }
+
+        .btn-light:hover svg {
+            transform: translateX(4px);
+        }
+
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            min-width: calc(33.333% - 14px);
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 28px;
+            flex-shrink: 0;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #e8e8e8;
+            margin-bottom: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-card .author-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+
+        .testimonial-card .author-role {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .slider-controls {
+            display: flex;
+            gap: 8px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .slider-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            color: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .slider-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
 
         /* ===== FOOTER ===== */
-        .footer { padding: 40px 60px; display: flex; flex-direction: column; gap: 24px; border-top: 1px solid #f0f0f0; }
-        .footer-top { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-        .footer-logo { display: flex; align-items: center; gap: 10px; }
-        .footer-logo .logo-icon { width: 36px; height: 36px; background: var(--dark-green); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-        .footer-logo .logo-icon svg { width: 20px; height: 20px; }
-        .footer-logo .logo-text .brand { font-size: 18px; font-weight: 800; color: var(--dark-green); line-height: 1.1; }
-        .footer-logo .logo-text .brand span { color: var(--accent-green); }
-        .footer-links { display: flex; gap: 24px; list-style: none; }
-        .footer-links a { font-size: 13px; color: var(--text-gray); transition: color 0.3s; }
-        .footer-links a:hover { color: var(--dark-green); }
-        
-        .footer-disclaimer { width: 100%; background: var(--light-green-bg2); border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px 20px; text-align: center; }
-        .footer-disclaimer p { font-size: 12px; color: var(--text-gray); line-height: 1.5; }
-        .footer-disclaimer strong { color: var(--dark-green); }
+        .footer {
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            border-top: 1px solid #f0f0f0;
+        }
 
-        .footer-bottom { display: flex; align-items: center; justify-content: space-between; width: 100%; padding-top: 20px; border-top: 1px solid #f0f0f0; }
-        .footer-copy .site-url { font-size: 13px; font-weight: 600; color: var(--text-dark); }
-        .footer-copy .copy-text { font-size: 11px; color: var(--text-light); }
+        .footer-disclaimer {
+            width: 100%;
+            background: var(--light-green-bg2);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px 20px;
+            text-align: center;
+        }
 
-        /* ===== ANIMATIONS & RESPONSIVE ===== */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        
+        .footer-disclaimer p {
+            font-size: 12px;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        .footer-disclaimer strong {
+            color: var(--dark-green);
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--dark-green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo .logo-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-logo .logo-text .brand {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--dark-green);
+            line-height: 1.1;
+        }
+
+        .footer-logo .logo-text .brand span {
+            color: var(--accent-green);
+        }
+
+        .footer-logo .logo-text .tagline {
+            font-size: 8px;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-gray);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--dark-green);
+        }
+
+        .footer-social {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1.5px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .footer-social a:hover {
+            border-color: var(--dark-green);
+            color: var(--dark-green);
+        }
+
+        .footer-copy {
+            text-align: right;
+        }
+
+        .footer-copy .site-url {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .footer-copy .copy-text {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        /* ===== MOBILE MENU ===== */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1200px) {
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-            .why-grid { grid-template-columns: repeat(2, 1fr); }
-            .why-card { border-right: none; border-bottom: 1px solid #f0f0f0; }
-            .testimonial-card { min-width: calc(50% - 10px); }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-card {
+                border-right: none;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .testimonial-card {
+                min-width: calc(50% - 10px);
+            }
         }
+
         @media (max-width: 992px) {
-            .navbar { padding: 16px 24px; }
-            .navbar-links { display: none; }
-            .mobile-menu-btn { display: block; }
-            .hero-content { padding: 60px 24px; }
-            .hero-title { font-size: 36px; }
-            .hero-handwritten { display: none; }
-            .features-section, .why-section, .testimonials-section { grid-template-columns: 1fr; padding: 60px 24px; }
-            .features-header, .why-header { position: static; }
-            .product-section { padding: 40px 24px 60px; }
-            .product-card { grid-template-columns: 1fr; }
-            .product-image { min-height: 300px; }
-            .product-info { padding: 32px; }
-            .footer { padding: 40px 24px; }
-            .footer-top, .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
-            .footer-links { flex-wrap: wrap; justify-content: center; }
+            .navbar {
+                padding: 16px 24px;
+            }
+
+            .navbar-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                padding: 60px 24px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-handwritten {
+                display: none;
+            }
+
+            .features-section,
+            .why-section,
+            .testimonials-section {
+                grid-template-columns: 1fr;
+                padding: 60px 24px;
+            }
+
+            .features-header,
+            .why-header {
+                position: static;
+            }
+
+            .product-section {
+                padding: 40px 24px 60px;
+            }
+
+            .product-card {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                min-height: 300px;
+            }
+
+            .product-info {
+                padding: 32px;
+            }
+
+            .footer {
+                padding: 40px 24px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .footer-copy {
+                text-align: center;
+            }
         }
+
         @media (max-width: 768px) {
-            .features-grid, .why-grid, .product-checklist { grid-template-columns: 1fr; }
-            .testimonial-card { min-width: 100%; }
-            .product-actions { flex-direction: column; align-items: flex-start; }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .product-checklist {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                min-width: 100%;
+            }
+
+            .product-actions {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile nav overlay */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 999;
+            padding: 80px 24px 24px;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--text-dark);
         }
     </style>
 </head>
+
 <body>
 
     <!-- NAVBAR -->
@@ -218,8 +1373,8 @@
         <div class="navbar-logo">
             <div class="logo-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
                 </svg>
             </div>
             <div class="logo-text">
@@ -227,28 +1382,542 @@
                 <div class="tagline">Criado por um morador, para moradores</div>
             </div>
         </div>
+
         <ul class="navbar-links">
             <li><a href="#" class="active">Início</a></li>
             <li><a href="#features">Serviços</a></li>
             <li><a href="#products">Produtos Digitais</a></li>
             <li><a href="#why">Sobre</a></li>
         </ul>
+
         <div class="navbar-actions">
+            <button class="search-btn" aria-label="Buscar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+            </button>
             <button class="btn-enter">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
                 </svg>
                 Entrar
             </button>
-            <button class="mobile-menu-btn" aria-label="Menu">
+            <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
-        </div
-</think>
+        </div>
+    </nav>
 
-### 🚀 Your Next Steps:
-1. **Update GitHub:** Go to your repository, click on `index.html`, click the pencil icon, paste this **entire new code**, and click "Commit changes".
-2. **Wait for DNS:** Keep an eye on that Registro.br timer. Once it hits zero, go to "Editar Zona" and add the 6 records we discussed.
-3. **Build Product #1:** Open Canva, search "Planner Financeiro Mensal", customize the cover to say "Organizador Park Cowboy", export as PDF, and upload it to a free Kiwify account to get your checkout link.
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+        <a href="#">Início</a>
+        <a href="#features">Serviços</a>
+        <a href="#products">Produtos Digitais</a>
+        <a href="#why">Sobre</a>
+        <a href="#">Contato</a>
+    </div>
 
-You are building something really smart here. Let me know when the DNS timer is up or if you need help writing the description for your first digital product!
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg>
+                Projeto independente de um morador
+            </div>
+            <h1 class="hero-title">
+                Tudo o que você precisa,<br>
+                <span class="highlight">em um só lugar.</span>
+            </h1>
+            <p class="hero-description">
+                Serviços, dicas, organização e produtos digitais para facilitar o seu dia a dia no condomínio e na sua
+                casa.
+            </p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <div class="hero-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                    </div>
+                    <div class="hero-feature-text">Serviços locais confiáveis</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="hero-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        </svg>
+                    </div>
+                    <div class="hero-feature-text">Guia completo do morador</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="hero-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                        </svg>
+                    </div>
+                    <div class="hero-feature-text">Ferramentas de organização</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="hero-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                    </div>
+                    <div class="hero-feature-text">Produtos digitais exclusivos</div>
+                </div>
+            </div>
+            <button class="btn-explore"
+                onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
+                Explorar agora
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+        <div class="hero-handwritten">
+            Mais praticidade,<br>mais tempo para<br>o que importa.
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section" id="features">
+        <div class="features-header fade-in">
+            <div class="section-line"></div>
+            <h2>Nossos principais recursos</h2>
+            <p>Ferramentas e serviços pensados para você e sua família.</p>
+            <button class="btn-outline">
+                Ver todos os recursos
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-card-icon green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                </div>
+                <h3>Serviços Locais</h3>
+                <p>Encontre profissionais de confiança perto de você.</p>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-card-icon blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                </div>
+                <h3>Guia do Morador</h3>
+                <p>Tudo o que você precisa saber sobre o condomínio.</p>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-card-icon orange">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                    </svg>
+                </div>
+                <h3>Mercado Local</h3>
+                <p>Compre e venda entre os moradores.</p>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-card-icon pink">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                    </svg>
+                </div>
+                <h3>Produtos Digitais</h3>
+                <p>Organize sua casa e sua vida com nossos kits.</p>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-card-icon yellow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                </div>
+                <h3>Dicas e Novidades</h3>
+                <p>Informações úteis e eventos do condomínio.</p>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-card-icon cyan">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg>
+                </div>
+                <h3>Suporte ao Morador</h3>
+                <p>Tire suas dúvidas de forma rápida e fácil.</p>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT HIGHLIGHT -->
+    <section class="product-section" id="products">
+        <div class="product-card fade-in">
+            <div class="product-image">
+                <div class="product-mockup">
+                    <div class="mockup-paper">
+                        <div class="paper-line"></div>
+                        <div class="paper-line"></div>
+                        <div class="paper-line"></div>
+                        <div class="paper-line"></div>
+                        <div class="paper-line"></div>
+                    </div>
+                    <div class="mockup-tablet">
+                        <div class="mockup-tablet-screen">
+                            <div class="kit-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                    <polyline points="9 22 9 12 15 12 15 22" />
+                                </svg>
+                            </div>
+                            <h4>Kit Exclusivo Park Cowboy</h4>
+                            <div class="kit-sub">Planeje · Organize · Conquiste</div>
+                            <div class="kit-list">
+                                <div>Orçamento Doméstico</div>
+                                <div>Checklist de Mudança</div>
+                                <div>Atividades para Crianças</div>
+                                <div>Serviços na Valentina</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mockup-phone">
+                        <div class="mockup-phone-screen">
+                            <div class="phone-bar"></div>
+                            <div class="phone-bar"></div>
+                            <div class="phone-bar"></div>
+                            <div class="phone-bar"></div>
+                            <div class="phone-bar"></div>
+                            <div class="phone-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-label">Produtos Digitais em Destaque</div>
+                <h2>Kit Organizador do Lar</h2>
+                <p>Mais controle para o seu dia a dia! Um conjunto de planilhas e checklists desenvolvidos
+                    especificamente para a rotina dos moradores.</p>
+                <ul class="product-checklist">
+                    <li>
+                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg></span>
+                        Planilha de orçamento doméstico
+                    </li>
+                    <li>
+                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg></span>
+                        Checklist de mudança e reforma
+                    </li>
+                    <li>
+                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg></span>
+                        Kit de atividades para crianças
+                    </li>
+                    <li>
+                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg></span>
+                        Guia de serviços locais na Valentina
+                    </li>
+                    <li>
+                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg></span>
+                        Planner mensal de rotina familiar
+                    </li>
+                    <li>
+                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg></span>
+                        Lista de contatos de emergência
+                    </li>
+                </ul>
+                <div class="product-actions">
+                    <button class="btn-primary">
+                        Ver produtos disponíveis
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                    <div class="etsy-badge">
+                        <span class="etsy-text">Disponível também<br>na Etsy!</span>
+                        <div class="etsy-icon">Etsy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE SECTION -->
+    <section class="why-section" id="why">
+        <div class="why-header fade-in">
+            <div class="section-line"></div>
+            <h2>Por que escolher o ParkCowboy?</h2>
+            <p>Porque aqui você tem praticidade, economia e uma comunidade que se ajuda.</p>
+            <button class="btn-outline">
+                Conheça mais sobre nós
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+        <div class="why-grid">
+            <div class="why-card fade-in">
+                <div class="why-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                </div>
+                <h3>Praticidade</h3>
+                <p>Tudo em um só lugar, sem complicação.</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="why-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <h3>Confiabilidade</h3>
+                <p>Indicações e serviços verificados.</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="why-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <h3>Comunidade</h3>
+                <p>Moradores sempre conectados.</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="why-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z" />
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+                    </svg>
+                </div>
+                <h3>Qualidade de vida</h3>
+                <p>Mais tempo para o que realmente importa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section">
+        <div class="testimonials-header fade-in">
+            <div class="section-line" style="background: var(--accent-green);"></div>
+            <h2>O que dizem os moradores</h2>
+            <p>Histórias reais de quem já usa o ParkCowboy.</p>
+            <button class="btn-light">
+                Ver mais depoimentos
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+        <div class="testimonials-slider fade-in">
+            <div class="slider-controls">
+                <button class="slider-btn" onclick="slideTestimonials(-1)">‹</button>
+                <button class="slider-btn" onclick="slideTestimonials(1)">›</button>
+            </div>
+            <div class="testimonials-track" id="testimonialsTrack">
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <circle cx="24" cy="24" r="24" fill="#e8d5c4" />
+                            <circle cx="24" cy="18" r="8" fill="#c4956a" />
+                            <path d="M10 42c0-8 6-14 14-14s14 6 14 14" fill="#c4956a" />
+                        </svg>
+                    </div>
+                    <blockquote>"O site me ajudou a encontrar um ótimo profissional de limpeza aqui no condomínio. Super
+                        prático!"</blockquote>
+                    <div class="author-name">Dayse</div>
+                    <div class="author-role">Corretora de imóveis</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <circle cx="24" cy="24" r="24" fill="#d5e0e8" />
+                            <circle cx="24" cy="18" r="8" fill="#6a8fa4" />
+                            <path d="M10 42c0-8 6-14 14-14s14 6 14 14" fill="#6a8fa4" />
+                        </svg>
+                    </div>
+                    <blockquote>"Comprei e vendi alguns itens no mercado local. Foi rápido, seguro e muito fácil de
+                        usar."</blockquote>
+                    <div class="author-name">Rafael S.</div>
+                    <div class="author-role">Morador do Park Cowboy</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <circle cx="24" cy="24" r="24" fill="#e8d5d5" />
+                            <circle cx="24" cy="18" r="8" fill="#a46a6a" />
+                            <path d="M10 42c0-8 6-14 14-14s14 6 14 14" fill="#a46a6a" />
+                        </svg>
+                    </div>
+                    <blockquote>"O kit organizador é incrível! Uso todo mês e já me ajudou muito na rotina da casa."
+                    </blockquote>
+                    <div class="author-name">Carla T.</div>
+                    <div class="author-role">Moradora do Park Cowboy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-disclaimer">
+            <p><strong>Aviso Legal:</strong> Este é um site particular e independente. <strong>Não possui nenhum vínculo
+                    oficial</strong> com a Administração ou o Síndico do Condomínio Park Cowboy. <br>Todo o conteúdo é
+                criado por um morador, para facilitar a vida dos moradores.</p>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <div class="brand">Park<span>Cowboy</span></div>
+                    <div class="tagline">Criado por um morador, para moradores</div>
+                </div>
+            </div>
+
+            <ul class="footer-links">
+                <li><a href="#">Início</a></li>
+                <li><a href="#features">Serviços</a></li>
+                <li><a href="#products">Produtos Digitais</a></li>
+                <li><a href="#why">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+
+            <div class="footer-social">
+                <a href="#" aria-label="Instagram">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="WhatsApp">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="footer-copy">
+                <div class="site-url">ParkCowboy.com.br</div>
+                <div class="copy-text">Um projeto independente.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Nav Toggle
+        function toggleMobileNav() {
+            document.getElementById('mobileNav').classList.toggle('open');
+        }
+
+        // Testimonials Slider
+        let currentSlide = 0;
+        const track = document.getElementById('testimonialsTrack');
+
+        function slideTestimonials(direction) {
+            const cards = track.querySelectorAll('.testimonial-card');
+            const cardWidth = cards[0].offsetWidth + 20;
+            const maxSlide = cards.length - Math.floor(track.parentElement.offsetWidth / cardWidth);
+
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide > maxSlide) currentSlide = maxSlide;
+
+            track.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+        }
+
+        // Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Navbar active link
+        document.querySelectorAll('.navbar-links a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                document.querySelectorAll('.navbar-links a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
