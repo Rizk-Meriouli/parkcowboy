@@ -2,1922 +2,1991 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParkCowboy - Condomínio & Vida Mais Fácil</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --dark-green: #0d3b2e;
-            --dark-green-deep: #0a2e24;
-            --accent-green: #4ecdc4;
-            --accent-green-light: #5dd6ce;
-            --light-green-bg: #e8f5f0;
-            --light-green-bg2: #f0f7f4;
-            --text-dark: #1a1a2e;
-            --text-gray: #5a6577;
-            --text-light: #8a95a5;
-            --white: #ffffff;
-            --card-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-            --border-radius: 12px;
-            --border-radius-lg: 16px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background: var(--white);
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* ===== NAVBAR ===== */
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 60px;
-            background: var(--white);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .navbar-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .navbar-logo .logo-icon {
-            width: 42px;
-            height: 42px;
-            background: var(--dark-green);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .navbar-logo .logo-icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .navbar-logo .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .navbar-logo .logo-text .brand {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--dark-green);
-            line-height: 1.1;
-        }
-
-        .navbar-logo .logo-text .brand span {
-            color: var(--accent-green);
-        }
-
-        .navbar-logo .logo-text .tagline {
-            font-size: 9px;
-            font-weight: 600;
-            color: var(--accent-green);
-            letter-spacing: 0.5px;
-            margin-top: 2px;
-        }
-
-        .navbar-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .navbar-links a {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-gray);
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .navbar-links a:hover,
-        .navbar-links a.active {
-            color: var(--dark-green);
-        }
-
-        .navbar-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--dark-green);
-            border-radius: 2px;
-        }
-
-        .navbar-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .navbar-actions .search-btn {
-            width: 40px;
-            height: 40px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-gray);
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-
-        .navbar-actions .search-btn:hover {
-            color: var(--dark-green);
-        }
-
-        .btn-enter {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 24px;
-            background: var(--dark-green);
-            color: var(--white);
-            border: none;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-enter:hover {
-            background: var(--dark-green-deep);
-            transform: translateY(-1px);
-        }
-
-        .btn-enter svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            position: relative;
-            min-height: 600px;
-            background: var(--dark-green);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80') center/cover no-repeat;
-            opacity: 0.4;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(13, 59, 46, 0.95) 0%, rgba(13, 59, 46, 0.7) 50%, rgba(13, 59, 46, 0.3) 100%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 80px 60px;
-            max-width: 650px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(78, 205, 196, 0.15);
-            border: 1px solid rgba(78, 205, 196, 0.3);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--accent-green);
-            margin-bottom: 20px;
-        }
-
-        .hero-label {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--accent-green);
-            margin-bottom: 16px;
-        }
-
-        .hero-title {
-            font-size: 52px;
-            font-weight: 800;
-            color: var(--white);
-            line-height: 1.15;
-            margin-bottom: 20px;
-        }
-
-        .hero-title .highlight {
-            color: var(--accent-green);
-        }
-
-        .hero-description {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.7;
-            margin-bottom: 32px;
-            max-width: 480px;
-        }
-
-        .hero-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            margin-bottom: 36px;
-        }
-
-        .hero-feature {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hero-feature-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(78, 205, 196, 0.15);
-            border: 1.5px solid rgba(78, 205, 196, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .hero-feature-icon svg {
-            width: 16px;
-            height: 16px;
-            color: var(--accent-green);
-        }
-
-        .hero-feature-text {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.3;
-            max-width: 120px;
-        }
-
-        .btn-explore {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 32px;
-            background: var(--accent-green);
-            color: var(--dark-green);
-            border: none;
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-explore:hover {
-            background: var(--accent-green-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);
-        }
-
-        .btn-explore svg {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.3s;
-        }
-
-        .btn-explore:hover svg {
-            transform: translateX(4px);
-        }
-
-        .hero-handwritten {
-            position: absolute;
-            right: 80px;
-            bottom: 80px;
-            z-index: 2;
-            font-family: 'Caveat', cursive;
-            font-size: 32px;
-            color: var(--white);
-            text-align: center;
-            line-height: 1.3;
-            transform: rotate(-3deg);
-        }
-
-        .hero-handwritten::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: var(--accent-green);
-            margin: 8px auto 0;
-            border-radius: 2px;
-        }
-
-        /* ===== FEATURES SECTION ===== */
-        .features-section {
-            padding: 80px 60px;
-            display: grid;
-            grid-template-columns: 340px 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .features-header {
-            position: sticky;
-            top: 100px;
-        }
-
-        .section-line {
-            width: 32px;
-            height: 3px;
-            background: var(--dark-green);
-            border-radius: 2px;
-            margin-bottom: 20px;
-        }
-
-        .features-header h2 {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--text-dark);
-            line-height: 1.2;
-            margin-bottom: 16px;
-        }
-
-        .features-header p {
-            font-size: 15px;
-            color: var(--text-gray);
-            line-height: 1.6;
-            margin-bottom: 28px;
-        }
-
-        .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: transparent;
-            color: var(--dark-green);
-            border: 2px solid var(--dark-green);
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-outline:hover {
-            background: var(--dark-green);
-            color: var(--white);
-        }
-
-        .btn-outline svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.3s;
-        }
-
-        .btn-outline:hover svg {
-            transform: translateX(4px);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .feature-card {
-            background: var(--white);
-            border: 1px solid #f0f0f0;
-            border-radius: var(--border-radius-lg);
-            padding: 28px;
-            transition: all 0.3s;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .feature-card:hover {
-            box-shadow: var(--card-shadow);
-            transform: translateY(-4px);
-            border-color: transparent;
-        }
-
-        .feature-card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
-
-        .feature-card-icon.green {
-            background: #e0f5f3;
-            color: #2a9d8f;
-        }
-
-        .feature-card-icon.blue {
-            background: #e8f0fe;
-            color: #4a6cf7;
-        }
-
-        .feature-card-icon.orange {
-            background: #fef0e0;
-            color: #e8873a;
-        }
-
-        .feature-card-icon.pink {
-            background: #fde0e8;
-            color: #e84a6f;
-        }
-
-        .feature-card-icon.yellow {
-            background: #fef9e0;
-            color: #d4a843;
-        }
-
-        .feature-card-icon.cyan {
-            background: #e0f5f8;
-            color: #3ab0c4;
-        }
-
-        .feature-card-icon svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .feature-card h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
-
-        .feature-card p {
-            font-size: 13px;
-            color: var(--text-gray);
-            line-height: 1.5;
-            margin-bottom: 16px;
-        }
-
-        .feature-card .card-arrow {
-            position: absolute;
-            bottom: 24px;
-            right: 24px;
-            width: 24px;
-            height: 24px;
-            color: var(--text-light);
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover .card-arrow {
-            color: var(--dark-green);
-            transform: translateX(4px);
-        }
-
-        /* ===== PRODUCT HIGHLIGHT ===== */
-        .product-section {
-            padding: 40px 60px 80px;
-        }
-
-        .product-card {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: var(--light-green-bg);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-        }
-
-        .product-image {
-            background: #f5f0e8;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            min-height: 420px;
-        }
-
-        .product-mockup {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            position: relative;
-        }
-
-        .mockup-tablet {
-            width: 180px;
-            height: 260px;
-            background: #2a2a2a;
-            border-radius: 16px;
-            padding: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            z-index: 2;
-        }
-
-        .mockup-tablet-screen {
-            width: 100%;
-            height: 100%;
-            background: var(--white);
-            border-radius: 8px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .mockup-tablet-screen .kit-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--dark-green);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 8px;
-        }
-
-        .mockup-tablet-screen .kit-icon svg {
-            width: 20px;
-            height: 20px;
-            color: var(--white);
-        }
-
-        .mockup-tablet-screen h4 {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--dark-green);
-            margin-bottom: 2px;
-            text-align: center;
-        }
-
-        .mockup-tablet-screen .kit-sub {
-            font-size: 8px;
-            color: var(--text-light);
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        .mockup-tablet-screen .kit-list {
-            width: 100%;
-            font-size: 9px;
-            color: var(--text-gray);
-        }
-
-        .mockup-tablet-screen .kit-list div {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 3px 0;
-        }
-
-        .mockup-tablet-screen .kit-list div::before {
-            content: '✓';
-            color: var(--accent-green);
-            font-weight: 700;
-            font-size: 10px;
-        }
-
-        .mockup-phone {
-            width: 90px;
-            height: 180px;
-            background: #2a2a2a;
-            border-radius: 16px;
-            padding: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-left: -20px;
-            margin-top: 40px;
-        }
-
-        .mockup-phone-screen {
-            width: 100%;
-            height: 100%;
-            background: var(--white);
-            border-radius: 10px;
-            padding: 8px;
-        }
-
-        .mockup-phone-screen .phone-bar {
-            height: 4px;
-            background: var(--light-green-bg);
-            border-radius: 2px;
-            margin-bottom: 6px;
-        }
-
-        .mockup-phone-screen .phone-bar:nth-child(2) {
-            width: 80%;
-        }
-
-        .mockup-phone-screen .phone-bar:nth-child(3) {
-            width: 60%;
-        }
-
-        .mockup-phone-screen .phone-bar:nth-child(4) {
-            width: 90%;
-            margin-top: 12px;
-        }
-
-        .mockup-phone-screen .phone-bar:nth-child(5) {
-            width: 70%;
-        }
-
-        .mockup-phone-screen .phone-bar:nth-child(6) {
-            width: 85%;
-        }
-
-        .mockup-paper {
-            position: absolute;
-            bottom: -10px;
-            left: 20px;
-            width: 120px;
-            height: 160px;
-            background: var(--white);
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            padding: 12px;
-            transform: rotate(-8deg);
-            z-index: 3;
-        }
-
-        .mockup-paper .paper-line {
-            height: 3px;
-            background: #e8e8e8;
-            border-radius: 2px;
-            margin-bottom: 8px;
-        }
-
-        .mockup-paper .paper-line:nth-child(2) {
-            width: 70%;
-        }
-
-        .mockup-paper .paper-line:nth-child(3) {
-            width: 85%;
-        }
-
-        .mockup-paper .paper-line:nth-child(4) {
-            width: 60%;
-            margin-top: 16px;
-        }
-
-        .mockup-paper .paper-line:nth-child(5) {
-            width: 75%;
-        }
-
-        .product-info {
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .product-label {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-green);
-            margin-bottom: 12px;
-        }
-
-        .product-info h2 {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-        }
-
-        .product-info>p {
-            font-size: 15px;
-            color: var(--text-gray);
-            line-height: 1.6;
-            margin-bottom: 28px;
-        }
-
-        .product-checklist {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
-        .product-checklist li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-            color: var(--text-dark);
-            list-style: none;
-        }
-
-        .product-checklist li .check-icon {
-            width: 22px;
-            height: 22px;
-            background: var(--dark-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .product-checklist li .check-icon svg {
-            width: 12px;
-            height: 12px;
-            color: var(--white);
-        }
-
-        .product-actions {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 32px;
-            background: var(--dark-green);
-            color: var(--white);
-            border: none;
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-primary:hover {
-            background: var(--dark-green-deep);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(13, 59, 46, 0.3);
-        }
-
-        .btn-primary svg {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.3s;
-        }
-
-        .btn-primary:hover svg {
-            transform: translateX(4px);
-        }
-
-        .etsy-badge {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .etsy-badge .etsy-text {
-            font-family: 'Caveat', cursive;
-            font-size: 16px;
-            color: var(--text-gray);
-            transform: rotate(-5deg);
-        }
-
-        .etsy-badge .etsy-icon {
-            width: 44px;
-            height: 44px;
-            background: #f1641e;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: 700;
-            font-size: 14px;
-            box-shadow: 0 4px 12px rgba(241, 100, 30, 0.3);
-        }
-
-        /* ===== WHY CHOOSE SECTION ===== */
-        .why-section {
-            padding: 80px 60px;
-            display: grid;
-            grid-template-columns: 340px 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .why-header h2 {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--text-dark);
-            line-height: 1.2;
-            margin-bottom: 16px;
-        }
-
-        .why-header p {
-            font-size: 15px;
-            color: var(--text-gray);
-            line-height: 1.6;
-            margin-bottom: 28px;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .why-card {
-            text-align: center;
-            padding: 32px 20px;
-            border-right: 1px solid #f0f0f0;
-        }
-
-        .why-card:last-child {
-            border-right: none;
-        }
-
-        .why-card-icon {
-            width: 56px;
-            height: 56px;
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .why-card-icon svg {
-            width: 40px;
-            height: 40px;
-            color: var(--dark-green);
-        }
-
-        .why-card h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
-
-        .why-card p {
-            font-size: 13px;
-            color: var(--text-gray);
-            line-height: 1.5;
-        }
-
-        /* ===== TESTIMONIALS SECTION ===== */
-        .testimonials-section {
-            background: var(--dark-green);
-            padding: 80px 60px;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .testimonials-header h2 {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--white);
-            line-height: 1.2;
-            margin-bottom: 16px;
-        }
-
-        .testimonials-header p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.6;
-            margin-bottom: 28px;
-        }
-
-        .btn-light {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--accent-green);
-            color: var(--dark-green);
-            border: none;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-light:hover {
-            background: var(--accent-green-light);
-            transform: translateY(-2px);
-        }
-
-        .btn-light svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.3s;
-        }
-
-        .btn-light:hover svg {
-            transform: translateX(4px);
-        }
-
-        .testimonials-slider {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonials-track {
-            display: flex;
-            gap: 20px;
-            transition: transform 0.5s ease;
-        }
-
-        .testimonial-card {
-            min-width: calc(33.333% - 14px);
-            background: var(--white);
-            border-radius: var(--border-radius-lg);
-            padding: 28px;
-            flex-shrink: 0;
-        }
-
-        .testimonial-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #e8e8e8;
-            margin-bottom: 16px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .testimonial-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .testimonial-card blockquote {
-            font-size: 14px;
-            color: var(--text-gray);
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .testimonial-card .author-name {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 2px;
-        }
-
-        .testimonial-card .author-role {
-            font-size: 12px;
-            color: var(--text-light);
-        }
-
-        .slider-controls {
-            display: flex;
-            gap: 8px;
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-
-        .slider-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
-            background: transparent;
-            color: var(--white);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            font-size: 14px;
-        }
-
-        .slider-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            padding: 40px 60px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .footer-disclaimer {
-            width: 100%;
-            background: var(--light-green-bg2);
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 16px 20px;
-            text-align: center;
-        }
-
-        .footer-disclaimer p {
-            font-size: 12px;
-            color: var(--text-gray);
-            line-height: 1.5;
-        }
-
-        .footer-disclaimer strong {
-            color: var(--dark-green);
-        }
-
-        .footer-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-logo .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--dark-green);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .footer-logo .logo-icon svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .footer-logo .logo-text .brand {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--dark-green);
-            line-height: 1.1;
-        }
-
-        .footer-logo .logo-text .brand span {
-            color: var(--accent-green);
-        }
-
-        .footer-logo .logo-text .tagline {
-            font-size: 8px;
-            font-weight: 600;
-            color: var(--text-light);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .footer-links a {
-            font-size: 13px;
-            color: var(--text-gray);
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--dark-green);
-        }
-
-        .footer-social {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .footer-social a {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 1.5px solid #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-gray);
-            transition: all 0.3s;
-            font-size: 14px;
-        }
-
-        .footer-social a:hover {
-            border-color: var(--dark-green);
-            color: var(--dark-green);
-        }
-
-        .footer-copy {
-            text-align: right;
-        }
-
-        .footer-copy .site-url {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .footer-copy .copy-text {
-            font-size: 11px;
-            color: var(--text-light);
-        }
-
-        /* ===== MOBILE MENU ===== */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .mobile-menu-btn span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--text-dark);
-            margin: 5px 0;
-            transition: all 0.3s;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1200px) {
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .why-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .why-card {
-                border-right: none;
-                border-bottom: 1px solid #f0f0f0;
-            }
-
-            .testimonial-card {
-                min-width: calc(50% - 10px);
-            }
-        }
-
-        @media (max-width: 992px) {
-            .navbar {
-                padding: 16px 24px;
-            }
-
-            .navbar-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero-content {
-                padding: 60px 24px;
-            }
-
-            .hero-title {
-                font-size: 36px;
-            }
-
-            .hero-handwritten {
-                display: none;
-            }
-
-            .features-section,
-            .why-section,
-            .testimonials-section {
-                grid-template-columns: 1fr;
-                padding: 60px 24px;
-            }
-
-            .features-header,
-            .why-header {
-                position: static;
-            }
-
-            .product-section {
-                padding: 40px 24px 60px;
-            }
-
-            .product-card {
-                grid-template-columns: 1fr;
-            }
-
-            .product-image {
-                min-height: 300px;
-            }
-
-            .product-info {
-                padding: 32px;
-            }
-
-            .footer {
-                padding: 40px 24px;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .footer-copy {
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-features {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .product-checklist {
-                grid-template-columns: 1fr;
-            }
-
-            .testimonial-card {
-                min-width: 100%;
-            }
-
-            .product-actions {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        /* ===== ANIMATIONS ===== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile nav overlay */
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--white);
-            z-index: 999;
-            padding: 80px 24px 24px;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .mobile-nav.open {
-            display: flex;
-        }
-
-        .mobile-nav a {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text-dark);
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .mobile-nav-close {
-            position: absolute;
-            top: 20px;
-            right: 24px;
-            background: none;
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: var(--text-dark);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Soluções digitais práticas para moradores do Park Cowboy e região de João Pessoa. Atividades infantis, planners, crochê e receitas." />
+  <meta name="theme-color" content="#103e43" />
+  <title>Park Cowboy Digital — Sua rotina, mais leve</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #15383b;
+      --ink-2: #254d50;
+      --teal: #103e43;
+      --teal-2: #17616a;
+      --coral: #f1785b;
+      --coral-deep: #df6349;
+      --mint: #a8d8bd;
+      --mint-bright: #64c69b;
+      --paper: #fbf8f1;
+      --paper-2: #f3eee4;
+      --white: #fffefa;
+      --muted: #667775;
+      --line: rgba(21, 56, 59, .11);
+      --shadow: 0 22px 60px rgba(16, 62, 67, .11);
+      --shadow-deep: 0 30px 70px rgba(10, 43, 47, .24);
+      --radius: 26px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image: radial-gradient(rgba(16, 62, 67, .055) .7px, transparent .7px);
+      background-size: 19px 19px;
+      opacity: .34;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .announcement {
+      background: var(--teal);
+      color: rgba(255, 255, 255, .9);
+      text-align: center;
+      padding: 9px 18px;
+      font-size: 12px;
+      letter-spacing: .035em;
+    }
+
+    .announcement strong {
+      color: #bfe9d0;
+      font-weight: 800;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 248, 241, .88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(21, 56, 59, .08);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-family: Manrope, sans-serif;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      font-size: 17px;
+    }
+
+    .brand-mark {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      color: white;
+      border-radius: 13px;
+      background: var(--coral);
+      box-shadow: 0 7px 16px rgba(241, 120, 91, .28);
+      transform: rotate(-5deg);
+    }
+
+    .brand-mark svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font: 600 9px 'DM Sans', sans-serif;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: -3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 29px;
+      color: #536765;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--coral-deep);
+    }
+
+    .nav-cta {
+      background: var(--teal);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: 0 8px 18px rgba(16, 62, 67, .16);
+      transition: .2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--teal-2);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      padding: 76px 0 70px;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      z-index: -1;
+    }
+
+    .hero::before {
+      width: 530px;
+      height: 530px;
+      right: -120px;
+      top: -190px;
+      background: radial-gradient(circle, rgba(168, 216, 189, .42), rgba(168, 216, 189, 0) 68%);
+    }
+
+    .hero::after {
+      width: 430px;
+      height: 430px;
+      left: -220px;
+      bottom: -170px;
+      background: radial-gradient(circle, rgba(241, 120, 91, .15), transparent 70%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--teal-2);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 10px;
+      font-weight: 800;
+      margin-bottom: 19px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 25px;
+      height: 2px;
+      background: var(--coral);
+      border-radius: 2px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Manrope, sans-serif;
+    }
+
+    .hero h1 {
+      font-size: clamp(39px, 5vw, 64px);
+      line-height: 1.08;
+      letter-spacing: -.065em;
+      max-width: 620px;
+      color: var(--teal);
+    }
+
+    .hero h1 em {
+      color: var(--coral);
+      font-style: normal;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .hero h1 em::after {
+      content: "";
+      position: absolute;
+      left: 2px;
+      right: 2px;
+      height: 9px;
+      bottom: 1px;
+      background: rgba(241, 120, 91, .19);
+      border-radius: 20px;
+      z-index: -1;
+    }
+
+    .hero-copy {
+      color: #60716e;
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 540px;
+      margin: 22px 0 27px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .button-primary,
+    .button-secondary {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 12px;
+      padding: 15px 20px;
+      font-weight: 800;
+      font-size: 13px;
+      transition: .22s ease;
+    }
+
+    .button-primary {
+      color: white;
+      background: var(--coral);
+      box-shadow: 0 11px 24px rgba(241, 120, 91, .25);
+    }
+
+    .button-primary:hover {
+      background: var(--coral-deep);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 28px rgba(241, 120, 91, .3);
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(16, 62, 67, .18);
+      color: var(--teal);
+      background: rgba(255, 255, 255, .55);
+    }
+
+    .button-secondary:hover {
+      border-color: var(--teal);
+      transform: translateY(-3px);
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 25px;
+      color: #71807d;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .hero-note .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--mint-bright);
+      box-shadow: 0 0 0 5px rgba(100, 198, 155, .13);
+    }
+
+    /* CSS-only 3D product stage */
+    .visual-stage {
+      min-height: 460px;
+      position: relative;
+      perspective: 1100px;
+      display: grid;
+      place-items: center;
+    }
+
+    .stage-orbit {
+      position: absolute;
+      width: 410px;
+      height: 410px;
+      border: 1px solid rgba(23, 97, 106, .13);
+      border-radius: 50%;
+      transform: rotateX(67deg) rotateZ(-18deg);
+    }
+
+    .stage-orbit::before,
+    .stage-orbit::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(23, 97, 106, .1);
+      border-radius: 50%;
+      inset: 28px;
+    }
+
+    .stage-orbit::after {
+      inset: 65px;
+    }
+
+    .stage-disc {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, #e8f3e9, #bfdcc9 58%, #a6cbb8 100%);
+      transform: rotateX(67deg) rotateZ(-18deg) translateZ(-24px);
+      box-shadow: 0 45px 35px rgba(16, 62, 67, .16), inset 0 5px 18px rgba(255, 255, 255, .7);
+    }
+
+    .hero-book {
+      position: absolute;
+      width: 225px;
+      height: 290px;
+      left: 50%;
+      top: 48%;
+      transform: translate(-51%, -50%) rotateY(-23deg) rotateZ(5deg);
+      transform-style: preserve-3d;
+      border-radius: 8px 15px 15px 8px;
+      background: linear-gradient(135deg, #fffdf6, #f2e9d8);
+      box-shadow: 18px 22px 0 -5px #d5cbb9, 20px 27px 0 -5px #c9beab, 29px 35px 35px rgba(20, 55, 56, .28), inset -8px 0 15px rgba(21, 56, 59, .07);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 4;
+    }
+
+    .hero-book::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 12px;
+      border-radius: 8px 0 0 8px;
+      background: linear-gradient(90deg, #d5cbb9, #fff9ec);
+      box-shadow: inset -2px 0 3px rgba(0, 0, 0, .08);
+    }
+
+    .book-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 5px;
+      color: var(--teal-2);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .book-symbol {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      background: var(--coral);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      box-shadow: 0 8px 12px rgba(241, 120, 91, .25);
+    }
+
+    .book-title {
+      padding-left: 5px;
+      color: var(--teal);
+      font: 800 27px/1.06 Manrope, sans-serif;
+      letter-spacing: -.06em;
+    }
+
+    .book-title span {
+      display: block;
+      color: var(--coral);
+    }
+
+    .book-lines {
+      padding-left: 5px;
+      display: grid;
+      gap: 7px;
+    }
+
+    .book-lines i {
+      height: 5px;
+      border-radius: 5px;
+      background: #d8e8dc;
+      display: block;
+    }
+
+    .book-lines i:nth-child(1) {
+      width: 87%;
+    }
+
+    .book-lines i:nth-child(2) {
+      width: 70%;
+    }
+
+    .book-lines i:nth-child(3) {
+      width: 52%;
+    }
+
+    .book-bottom {
+      padding-left: 5px;
+      color: #7b8982;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .float-card {
+      position: absolute;
+      z-index: 6;
+      border: 1px solid rgba(255, 255, 255, .78);
+      background: rgba(255, 254, 250, .83);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 35px rgba(16, 62, 67, .13);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      animation: bob 5s ease-in-out infinite;
+    }
+
+    .float-card strong {
+      display: block;
+      font: 800 11px Manrope, sans-serif;
+      color: var(--teal);
+    }
+
+    .float-card small {
+      display: block;
+      color: #82908a;
+      font-size: 9px;
+    }
+
+    .float-icon {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+      background: #fff0e9;
+    }
+
+    .float-one {
+      top: 53px;
+      right: 0;
+      animation-delay: -.8s;
+    }
+
+    .float-two {
+      bottom: 65px;
+      left: -5px;
+      animation-delay: -2.3s;
+    }
+
+    .float-three {
+      bottom: 18px;
+      right: 35px;
+      animation-delay: -1.4s;
+    }
+
+    .spark {
+      position: absolute;
+      color: var(--coral);
+      font-size: 26px;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    .spark-a {
+      top: 73px;
+      left: 70px;
+    }
+
+    .spark-b {
+      right: 58px;
+      top: 185px;
+      font-size: 17px;
+      animation-delay: -1s;
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-1deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(1deg);
+      }
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: .45;
+        transform: scale(.8) rotate(0);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.15) rotate(20deg);
+      }
+    }
+
+    .quick-proof {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 254, 250, .62);
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 21px 0;
+    }
+
+    .proof-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 4px 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .proof-item:last-child {
+      border: 0;
+    }
+
+    .proof-icon {
+      width: 37px;
+      height: 37px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: #eaf4ed;
+      font-size: 17px;
+    }
+
+    .proof-item strong {
+      display: block;
+      font: 800 11px Manrope, sans-serif;
+      color: var(--teal);
+    }
+
+    .proof-item small {
+      display: block;
+      color: #82908a;
+      font-size: 10px;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 37px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      color: var(--coral-deep);
+      text-transform: uppercase;
+      letter-spacing: .17em;
+      font-size: 10px;
+      font-weight: 800;
+      margin-bottom: 11px;
+    }
+
+    .section-heading h2 {
+      color: var(--teal);
+      font-size: clamp(29px, 3.8vw, 42px);
+      letter-spacing: -.055em;
+      line-height: 1.15;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 13px;
+    }
+
+    .quiz-panel {
+      background: var(--teal);
+      color: white;
+      border-radius: 24px;
+      padding: 31px;
+      box-shadow: var(--shadow-deep);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quiz-panel::after {
+      content: "";
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      border: 1px solid rgba(255, 255, 255, .09);
+      border-radius: 50%;
+      right: -82px;
+      top: -155px;
+      box-shadow: 0 0 0 25px rgba(255, 255, 255, .025), 0 0 0 52px rgba(255, 255, 255, .02);
+    }
+
+    .quiz-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 19px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quiz-head h2 {
+      font-size: 21px;
+      letter-spacing: -.04em;
+    }
+
+    .quiz-head p {
+      color: rgba(255, 255, 255, .62);
+      font-size: 11px;
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 11px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quiz-choice {
+      min-height: 115px;
+      text-align: left;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, .07);
+      color: white;
+      cursor: pointer;
+      transition: .22s ease;
+    }
+
+    .quiz-choice:hover,
+    .quiz-choice:focus-visible {
+      background: rgba(255, 255, 255, .15);
+      border-color: var(--mint);
+      transform: translateY(-4px);
+      outline: none;
+    }
+
+    .quiz-choice .emoji {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 11px;
+    }
+
+    .quiz-choice strong {
+      display: block;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .products-section {
+      padding-top: 86px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1px solid rgba(21, 56, 59, .075);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 13px 38px rgba(16, 62, 67, .065);
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      min-height: 380px;
+      transition: transform .3s ease, box-shadow .3s ease;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-art {
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      min-height: 100%;
+      isolation: isolate;
+    }
+
+    .product-art::before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .32);
+      transform: translate(8px, 10px);
+      z-index: -1;
+    }
+
+    .art-kids {
+      background: linear-gradient(145deg, #ffe6db, #f5bba8);
+    }
+
+    .art-planner {
+      background: linear-gradient(145deg, #dff0ee, #acd7d1);
+    }
+
+    .art-crochet {
+      background: linear-gradient(145deg, #e8f1df, #bdd9b9);
+    }
+
+    .art-recipes {
+      background: linear-gradient(145deg, #f9edcf, #efc98f);
+    }
+
+    .mini-book {
+      width: 145px;
+      height: 198px;
+      border-radius: 6px 11px 11px 6px;
+      position: relative;
+      transform: rotateY(-22deg) rotateZ(-6deg);
+      transform-style: preserve-3d;
+      padding: 17px 13px 14px 19px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 10px 13px 0 -3px rgba(21, 56, 59, .17), 17px 22px 27px rgba(21, 56, 59, .22), inset -5px 0 9px rgba(0, 0, 0, .08);
+      transition: transform .45s ease;
+    }
+
+    .product-card:hover .mini-book {
+      transform: rotateY(-12deg) rotateZ(-2deg) translateY(-7px);
+    }
+
+    .mini-book::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 8px;
+      border-radius: 6px 0 0 6px;
+      background: rgba(0, 0, 0, .1);
+    }
+
+    .mini-book.kids {
+      background: #fff9ef;
+    }
+
+    .mini-book.planner {
+      background: #f6fffb;
+    }
+
+    .mini-book.crochet {
+      background: #fffdf4;
+    }
+
+    .mini-book.recipes {
+      background: #fff9e9;
+    }
+
+    .mini-label {
+      font-size: 7px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-weight: 800;
+      color: var(--teal-2);
+    }
+
+    .mini-title {
+      font: 800 20px/1.02 Manrope, sans-serif;
+      letter-spacing: -.06em;
+      color: var(--teal);
+    }
+
+    .mini-title span {
+      display: block;
+      color: var(--coral);
+    }
+
+    .mini-emoji {
+      font-size: 29px;
+      text-align: center;
+      filter: drop-shadow(0 4px 2px rgba(0, 0, 0, .08));
+    }
+
+    .mini-foot {
+      font-size: 6px;
+      color: #7b8982;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 800;
+    }
+
+    .art-sticker {
+      position: absolute;
+      bottom: 26px;
+      left: 16px;
+      padding: 8px 11px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .8);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 18px rgba(21, 56, 59, .1);
+      font-size: 9px;
+      font-weight: 800;
+      color: var(--teal);
+      transform: rotate(-5deg);
+    }
+
+    .product-content {
+      padding: 28px 25px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 99px;
+      background: #fff0e9;
+      color: #bb5b42;
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 800;
+      margin-bottom: 13px;
+    }
+
+    .tag.teal {
+      background: #e8f3f1;
+      color: var(--teal-2);
+    }
+
+    .tag.green {
+      background: #eaf4e8;
+      color: #527e55;
+    }
+
+    .tag.gold {
+      background: #fbf1d9;
+      color: #98702f;
+    }
+
+    .product-content h3 {
+      color: var(--teal);
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -.045em;
+      margin-bottom: 10px;
+    }
+
+    .product-content>p {
+      color: #687975;
+      font-size: 11px;
+      line-height: 1.65;
+      margin-bottom: 13px;
+    }
+
+    .benefits {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+      margin-bottom: 18px;
+    }
+
+    .benefits li {
+      color: #536864;
+      font-size: 10px;
+      line-height: 1.45;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .benefits li::before {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      flex: 0 0 15px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      color: white;
+      background: var(--mint-bright);
+      font-size: 9px;
+      font-weight: 900;
+      margin-top: 0;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: end;
+      gap: 9px;
+      margin-top: auto;
+      margin-bottom: 13px;
+    }
+
+    .old-price {
+      color: #9aa5a0;
+      font-size: 10px;
+      text-decoration: line-through;
+      display: block;
+    }
+
+    .price-label {
+      color: #85918b;
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 800;
+      display: block;
+    }
+
+    .new-price {
+      color: var(--coral-deep);
+      font: 800 29px/1 Manrope, sans-serif;
+      letter-spacing: -.06em;
+    }
+
+    .installment {
+      color: #788782;
+      font-size: 9px;
+      margin-left: 2px;
+    }
+
+    .product-cta {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--teal);
+      color: white;
+      padding: 12px 13px;
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: 800;
+      text-align: center;
+      transition: .2s;
+    }
+
+    .product-cta:hover {
+      background: var(--teal-2);
+      transform: translateY(-2px);
+    }
+
+    .instant-note {
+      color: #87948e;
+      font-size: 8px;
+      text-align: center;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .instant-note b {
+      color: #45a77e;
+    }
+
+    .trust-section {
+      background: var(--teal);
+      color: white;
+      padding: 76px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trust-section::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, .07);
+      right: -120px;
+      top: -245px;
+      box-shadow: 0 0 0 35px rgba(255, 255, 255, .025), 0 0 0 70px rgba(255, 255, 255, .018);
+    }
+
+    .trust-heading {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 34px;
+      position: relative;
+    }
+
+    .trust-heading .section-kicker {
+      color: #a9d8c0;
+    }
+
+    .trust-heading h2 {
+      font-size: clamp(27px, 3.5vw, 39px);
+      letter-spacing: -.05em;
+      line-height: 1.15;
+    }
+
+    .trust-heading p {
+      color: rgba(255, 255, 255, .62);
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      position: relative;
+    }
+
+    .trust-item {
+      padding: 24px 18px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 17px;
+      background: rgba(255, 255, 255, .055);
+    }
+
+    .trust-item .icon {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .trust-item strong {
+      display: block;
+      font: 800 12px Manrope, sans-serif;
+    }
+
+    .trust-item p {
+      color: rgba(255, 255, 255, .57);
+      font-size: 10px;
+      margin-top: 5px;
+    }
+
+    .payment-panel {
+      margin-top: 20px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      border-radius: 17px;
+      background: rgba(255, 255, 255, .045);
+      border: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .pix {
+      background: #00a987;
+      padding: 8px 15px;
+      border-radius: 8px;
+      color: white;
+      font: 800 16px Manrope, sans-serif;
+      letter-spacing: .08em;
+      box-shadow: 0 0 20px rgba(0, 201, 153, .19);
+    }
+
+    .cards {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cards span {
+      background: rgba(255, 255, 255, .92);
+      color: #3c4c4a;
+      padding: 6px 10px;
+      border-radius: 5px;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .05em;
+    }
+
+    .testimonial {
+      max-width: 700px;
+      margin: 34px auto 0;
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 20px;
+      padding: 29px 34px;
+      position: relative;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, .12);
+    }
+
+    .testimonial::before {
+      content: "“";
+      position: absolute;
+      top: 2px;
+      left: 20px;
+      font: 800 70px/1 Manrope, sans-serif;
+      color: rgba(241, 120, 91, .25);
+    }
+
+    .stars {
+      color: #e9ac43;
+      letter-spacing: 3px;
+      font-size: 16px;
+      margin-bottom: 9px;
+    }
+
+    .testimonial blockquote {
+      color: #60716d;
+      font-size: 13px;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .testimonial footer {
+      margin-top: 15px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--teal);
+    }
+
+    .testimonial footer span {
+      display: block;
+      color: #909b95;
+      font-size: 9px;
+      font-weight: 500;
+    }
+
+    .final-cta {
+      padding: 76px 0;
+    }
+
+    .final-panel {
+      background: #f1e9dc;
+      border-radius: 25px;
+      padding: 36px 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-panel::after {
+      content: "✦";
+      position: absolute;
+      right: 36%;
+      top: -52px;
+      color: rgba(241, 120, 91, .17);
+      font-size: 180px;
+      transform: rotate(17deg);
+    }
+
+    .final-panel h2 {
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -.055em;
+      line-height: 1.15;
+      color: var(--teal);
+      max-width: 540px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-panel p {
+      color: #6b7974;
+      font-size: 12px;
+      margin-top: 9px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-panel .button-primary {
+      flex: 0 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer {
+      padding: 30px 0 28px;
+      border-top: 1px solid var(--line);
+      background: #f7f2e9;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .footer-contact {
+      color: #647570;
+      font-size: 11px;
+      text-align: right;
+    }
+
+    .footer-contact a {
+      color: var(--teal-2);
+      font-weight: 800;
+    }
+
+    .legal {
+      padding-top: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: #929b94;
+      font-size: 9px;
+    }
+
+    .legal-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .legal a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .floating-help {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #24b879;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+      z-index: 60;
+      box-shadow: 0 10px 28px rgba(20, 130, 85, .32);
+      border: 3px solid rgba(255, 255, 255, .85);
+      transition: transform .2s;
+    }
+
+    .floating-help:hover {
+      transform: translateY(-4px) scale(1.04);
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 100;
+      bottom: 90px;
+      left: 50%;
+      transform: translate(-50%, 15px);
+      padding: 13px 18px;
+      border-radius: 12px;
+      background: var(--teal);
+      color: white;
+      box-shadow: var(--shadow-deep);
+      font-size: 12px;
+      max-width: calc(100% - 32px);
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 1000px) {
+      .hero-grid {
+        gap: 15px;
+      }
+
+      .visual-stage {
+        transform: scale(.9);
+      }
+
+      .product-card {
+        grid-template-columns: 1fr;
+      }
+
+      .product-art {
+        min-height: 235px;
+      }
+
+      .product-content {
+        padding: 23px;
+      }
+
+      .mini-book {
+        transform: rotateY(-18deg) rotateZ(-5deg) scale(.82);
+      }
+
+      .product-card:hover .mini-book {
+        transform: rotateY(-10deg) rotateZ(-2deg) translateY(-4px) scale(.82);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 34px, var(--max));
+      }
+
+      .nav {
+        height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta {
+        padding: 10px 13px;
+        font-size: 10px;
+      }
+
+      .hero {
+        padding: 52px 0 42px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .hero-copy {
+        font-size: 14px;
+      }
+
+      .visual-stage {
+        min-height: 390px;
+        transform: scale(.92);
+        margin: -5px 0 -15px;
+      }
+
+      .stage-orbit {
+        width: 350px;
+        height: 350px;
+      }
+
+      .stage-disc {
+        width: 285px;
+        height: 285px;
+      }
+
+      .hero-book {
+        width: 200px;
+        height: 260px;
+      }
+
+      .hero-book .book-title {
+        font-size: 24px;
+      }
+
+      .proof-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 0;
+      }
+
+      .proof-item {
+        justify-content: flex-start;
+        border: 0;
+        padding: 0 10px;
+      }
+
+      .proof-item strong {
+        font-size: 11px;
+      }
+
+      .section {
+        padding: 65px 0;
+      }
+
+      .quiz-panel {
+        padding: 25px 19px;
+      }
+
+      .quiz-head {
+        display: block;
+      }
+
+      .quiz-head p {
+        margin-top: 4px;
+      }
+
+      .quiz-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quiz-choice {
+        min-height: 110px;
+      }
+
+      .products-section {
+        padding-top: 66px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .product-card {
+        grid-template-columns: .82fr 1.18fr;
+        min-height: 350px;
+      }
+
+      .product-art {
+        min-height: 100%;
+      }
+
+      .product-content {
+        padding: 19px 17px;
+      }
+
+      .product-content h3 {
+        font-size: 17px;
+      }
+
+      .product-content>p {
+        font-size: 10px;
+      }
+
+      .benefits li {
+        font-size: 9px;
+      }
+
+      .mini-book {
+        transform: rotateY(-18deg) rotateZ(-5deg) scale(.76);
+      }
+
+      .product-card:hover .mini-book {
+        transform: rotateY(-10deg) rotateZ(-2deg) translateY(-4px) scale(.76);
+      }
+
+      .art-sticker {
+        left: 7px;
+        bottom: 15px;
+        font-size: 8px;
+      }
+
+      .trust-section {
+        padding: 62px 0;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-item {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 14px;
+        padding: 16px;
+      }
+
+      .trust-item .icon {
+        margin: 0;
+        width: 38px;
+      }
+
+      .trust-item p {
+        margin-top: 2px;
+      }
+
+      .testimonial {
+        padding: 26px 23px;
+      }
+
+      .final-panel {
+        display: block;
+        padding: 30px 24px;
+      }
+
+      .final-panel .button-primary {
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .footer-top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-contact {
+        text-align: left;
+      }
+
+      .legal {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .announcement {
+        font-size: 10px;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .brand-mark {
+        width: 35px;
+        height: 35px;
+      }
+
+      .hero h1 {
+        font-size: 39px;
+      }
+
+      .visual-stage {
+        min-height: 340px;
+        transform: scale(.8);
+        margin: -20px 0 -30px;
+        width: 125%;
+        margin-left: -12.5%;
+      }
+
+      .product-card {
+        grid-template-columns: 1fr;
+      }
+
+      .product-art {
+        min-height: 230px;
+      }
+
+      .product-content {
+        padding: 23px;
+      }
+
+      .mini-book {
+        transform: rotateY(-18deg) rotateZ(-5deg) scale(.85);
+      }
+
+      .product-card:hover .mini-book {
+        transform: rotateY(-10deg) rotateZ(-2deg) translateY(-4px) scale(.85);
+      }
+
+      .quiz-choice {
+        padding: 13px;
+      }
+
+      .quiz-choice strong {
+        font-size: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="navbar-logo">
-            <div class="logo-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                </svg>
-            </div>
-            <div class="logo-text">
-                <div class="brand">Park<span>Cowboy</span></div>
-                <div class="tagline">Criado por um morador, para moradores</div>
-            </div>
-        </div>
-
-        <ul class="navbar-links">
-            <li><a href="#" class="active">Início</a></li>
-            <li><a href="#features">Serviços</a></li>
-            <li><a href="#products">Produtos Digitais</a></li>
-            <li><a href="#why">Sobre</a></li>
-        </ul>
-
-        <div class="navbar-actions">
-            <button class="search-btn" aria-label="Buscar">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="m21 21-4.35-4.35" />
-                </svg>
-            </button>
-            <button class="btn-enter">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                </svg>
-                Entrar
-            </button>
-            <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Nav -->
-    <div class="mobile-nav" id="mobileNav">
-        <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
-        <a href="#">Início</a>
-        <a href="#features">Serviços</a>
-        <a href="#products">Produtos Digitais</a>
-        <a href="#why">Sobre</a>
-        <a href="#">Contato</a>
+  <div class="announcement">📍 Exclusivo para moradores do <strong>Park Cowboy</strong> e região &nbsp;·&nbsp; Entrega
+    digital no seu WhatsApp ou e-mail</div>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Park Cowboy Digital — início">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 11.5 12 4l8 7.5" />
+            <path d="M6.5 10v9h11v-9M9.5 19v-5.5h5V19" />
+          </svg></span>
+        <span>park cowboy <small>digital store</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#solucoes">Soluções</a><a href="#como-funciona">Como funciona</a><a href="#contato">Contato</a>
+      </nav>
+      <a class="nav-cta" href="#solucoes">ENCONTRE SUA SOLUÇÃO <span aria-hidden="true">↗</span></a>
     </div>
+  </header>
 
-    <!-- HERO SECTION -->
+  <main id="inicio">
     <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                </svg>
-                Projeto independente de um morador
-            </div>
-            <h1 class="hero-title">
-                Tudo o que você precisa,<br>
-                <span class="highlight">em um só lugar.</span>
-            </h1>
-            <p class="hero-description">
-                Serviços, dicas, organização e produtos digitais para facilitar o seu dia a dia no condomínio e na sua
-                casa.
-            </p>
-            <div class="hero-features">
-                <div class="hero-feature">
-                    <div class="hero-feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                            <circle cx="12" cy="7" r="4" />
-                        </svg>
-                    </div>
-                    <div class="hero-feature-text">Serviços locais confiáveis</div>
-                </div>
-                <div class="hero-feature">
-                    <div class="hero-feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                        </svg>
-                    </div>
-                    <div class="hero-feature-text">Guia completo do morador</div>
-                </div>
-                <div class="hero-feature">
-                    <div class="hero-feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path
-                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                        </svg>
-                    </div>
-                    <div class="hero-feature-text">Ferramentas de organização</div>
-                </div>
-                <div class="hero-feature">
-                    <div class="hero-feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                            <polyline points="22 4 12 14.01 9 11.01" />
-                        </svg>
-                    </div>
-                    <div class="hero-feature-text">Produtos digitais exclusivos</div>
-                </div>
-            </div>
-            <button class="btn-explore"
-                onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
-                Explorar agora
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </button>
+      <div class="container hero-grid">
+        <div class="hero-copy-wrap">
+          <span class="eyebrow">Pequenas soluções. Grandes diferenças.</span>
+          <h1>Facilite a rotina da sua família e do <em>seu lar.</em></h1>
+          <p class="hero-copy">Soluções digitais práticas para o dia a dia: de atividades infantis a organização
+            financeira, crochê e receitas rápidas. Escolha o que faz sentido para você e tenha tudo à mão.</p>
+          <div class="hero-actions"><a class="button-primary" href="#escolha">Descobrir minha solução
+              <span>→</span></a><a class="button-secondary" href="#solucoes">Ver todos os produtos</a></div>
+          <div class="hero-note"><span class="dot"></span> Arquivos digitais com acesso rápido e prático.</div>
         </div>
-        <div class="hero-handwritten">
-            Mais praticidade,<br>mais tempo para<br>o que importa.
+        <div class="visual-stage" aria-label="Composição ilustrativa tridimensional de produtos digitais">
+          <div class="stage-orbit"></div>
+          <div class="stage-disc"></div>
+          <div class="hero-book">
+            <div class="book-top"><span>Park Cowboy</span><span>01 / 04</span></div>
+            <div class="book-symbol">✦</div>
+            <div class="book-title">ROTINA<span>LEVE.</span></div>
+            <div class="book-lines"><i></i><i></i><i></i></div>
+            <div class="book-bottom">Ideias para o seu dia a dia</div>
+          </div>
+          <div class="float-card float-one"><span class="float-icon">🧩</span><span><strong>Aprender
+                brincando</strong><small>Atividades para crianças</small></span></div>
+          <div class="float-card float-two"><span class="float-icon">📊</span><span><strong>Mais
+                organização</strong><small>Planeje sem complicação</small></span></div>
+          <div class="float-card float-three"><span class="float-icon">🧶</span><span><strong>Novas
+                possibilidades</strong><small>Criatividade todos os dias</small></span></div>
+          <span class="spark spark-a">✳</span><span class="spark spark-b">✦</span>
         </div>
+      </div>
     </section>
 
-    <!-- FEATURES SECTION -->
-    <section class="features-section" id="features">
-        <div class="features-header fade-in">
-            <div class="section-line"></div>
-            <h2>Nossos principais recursos</h2>
-            <p>Ferramentas e serviços pensados para você e sua família.</p>
-            <button class="btn-outline">
-                Ver todos os recursos
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </button>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card fade-in">
-                <div class="feature-card-icon green">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                        <polyline points="9 22 9 12 15 12 15 22" />
-                    </svg>
-                </div>
-                <h3>Serviços Locais</h3>
-                <p>Encontre profissionais de confiança perto de você.</p>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </div>
-            <div class="feature-card fade-in">
-                <div class="feature-card-icon blue">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                    </svg>
-                </div>
-                <h3>Guia do Morador</h3>
-                <p>Tudo o que você precisa saber sobre o condomínio.</p>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </div>
-            <div class="feature-card fade-in">
-                <div class="feature-card-icon orange">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="9" cy="21" r="1" />
-                        <circle cx="20" cy="21" r="1" />
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                    </svg>
-                </div>
-                <h3>Mercado Local</h3>
-                <p>Compre e venda entre os moradores.</p>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </div>
-            <div class="feature-card fade-in">
-                <div class="feature-card-icon pink">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                    </svg>
-                </div>
-                <h3>Produtos Digitais</h3>
-                <p>Organize sua casa e sua vida com nossos kits.</p>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </div>
-            <div class="feature-card fade-in">
-                <div class="feature-card-icon yellow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon
-                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                    </svg>
-                </div>
-                <h3>Dicas e Novidades</h3>
-                <p>Informações úteis e eventos do condomínio.</p>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </div>
-            <div class="feature-card fade-in">
-                <div class="feature-card-icon cyan">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                    </svg>
-                </div>
-                <h3>Suporte ao Morador</h3>
-                <p>Tire suas dúvidas de forma rápida e fácil.</p>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </div>
-        </div>
+    <section class="quick-proof" aria-label="Vantagens">
+      <div class="container proof-grid">
+        <div class="proof-item"><span class="proof-icon">⚡</span><span><strong>Acesso imediato</strong><small>Receba
+              após a confirmação</small></span></div>
+        <div class="proof-item"><span class="proof-icon">📱</span><span><strong>Use onde quiser</strong><small>Celular,
+              tablet ou impressão</small></span></div>
+        <div class="proof-item"><span class="proof-icon">💚</span><span><strong>Praticidade no dia a
+              dia</strong><small>Conteúdo simples de aproveitar</small></span></div>
+      </div>
     </section>
 
-    <!-- PRODUCT HIGHLIGHT -->
-    <section class="product-section" id="products">
-        <div class="product-card fade-in">
-            <div class="product-image">
-                <div class="product-mockup">
-                    <div class="mockup-paper">
-                        <div class="paper-line"></div>
-                        <div class="paper-line"></div>
-                        <div class="paper-line"></div>
-                        <div class="paper-line"></div>
-                        <div class="paper-line"></div>
-                    </div>
-                    <div class="mockup-tablet">
-                        <div class="mockup-tablet-screen">
-                            <div class="kit-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                    <polyline points="9 22 9 12 15 12 15 22" />
-                                </svg>
-                            </div>
-                            <h4>Kit Exclusivo Park Cowboy</h4>
-                            <div class="kit-sub">Planeje · Organize · Conquiste</div>
-                            <div class="kit-list">
-                                <div>Orçamento Doméstico</div>
-                                <div>Checklist de Mudança</div>
-                                <div>Atividades para Crianças</div>
-                                <div>Serviços na Valentina</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mockup-phone">
-                        <div class="mockup-phone-screen">
-                            <div class="phone-bar"></div>
-                            <div class="phone-bar"></div>
-                            <div class="phone-bar"></div>
-                            <div class="phone-bar"></div>
-                            <div class="phone-bar"></div>
-                            <div class="phone-bar"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-label">Produtos Digitais em Destaque</div>
-                <h2>Kit Organizador do Lar</h2>
-                <p>Mais controle para o seu dia a dia! Um conjunto de planilhas e checklists desenvolvidos
-                    especificamente para a rotina dos moradores.</p>
-                <ul class="product-checklist">
-                    <li>
-                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3">
-                                <polyline points="20 6 9 17 4 12" />
-                            </svg></span>
-                        Planilha de orçamento doméstico
-                    </li>
-                    <li>
-                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3">
-                                <polyline points="20 6 9 17 4 12" />
-                            </svg></span>
-                        Checklist de mudança e reforma
-                    </li>
-                    <li>
-                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3">
-                                <polyline points="20 6 9 17 4 12" />
-                            </svg></span>
-                        Kit de atividades para crianças
-                    </li>
-                    <li>
-                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3">
-                                <polyline points="20 6 9 17 4 12" />
-                            </svg></span>
-                        Guia de serviços locais na Valentina
-                    </li>
-                    <li>
-                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3">
-                                <polyline points="20 6 9 17 4 12" />
-                            </svg></span>
-                        Planner mensal de rotina familiar
-                    </li>
-                    <li>
-                        <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3">
-                                <polyline points="20 6 9 17 4 12" />
-                            </svg></span>
-                        Lista de contatos de emergência
-                    </li>
-                </ul>
-                <div class="product-actions">
-                    <button class="btn-primary">
-                        Ver produtos disponíveis
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                    <div class="etsy-badge">
-                        <span class="etsy-text">Disponível também<br>na Etsy!</span>
-                        <div class="etsy-icon">Etsy</div>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="escolha">
+      <div class="container">
+        <div class="quiz-panel reveal">
+          <div class="quiz-head">
+            <div>
+              <h2>O que você quer simplificar hoje?</h2>
+              <p>Escolha uma opção para encontrar a solução ideal para você.</p>
+            </div><span aria-hidden="true">✦</span>
+          </div>
+          <div class="quiz-grid">
+            <a class="quiz-choice" href="#secao-criancas"><span class="emoji">🧩</span><strong>Menos tempo nas telas e
+                mais atividades para as crianças</strong></a>
+            <a class="quiz-choice" href="#secao-planner"><span class="emoji">📊</span><strong>Organizar o orçamento e a
+                rotina da família</strong></a>
+            <a class="quiz-choice" href="#secao-croche"><span class="emoji">🧶</span><strong>Aprender crochê e explorar
+                uma nova habilidade</strong></a>
+            <a class="quiz-choice" href="#secao-receitas"><span class="emoji">🍳</span><strong>Encontrar ideias para
+                refeições práticas e saborosas</strong></a>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- WHY CHOOSE SECTION -->
-    <section class="why-section" id="why">
-        <div class="why-header fade-in">
-            <div class="section-line"></div>
-            <h2>Por que escolher o ParkCowboy?</h2>
-            <p>Porque aqui você tem praticidade, economia e uma comunidade que se ajuda.</p>
-            <button class="btn-outline">
-                Conheça mais sobre nós
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </button>
+    <section class="section products-section" id="solucoes">
+      <div class="container">
+        <div class="section-heading reveal"><span class="section-kicker">Escolha o que combina com você</span>
+          <h2>Um jeito mais simples de cuidar<br />do que importa.</h2>
+          <p>Recursos digitais pensados para apoiar diferentes momentos da vida em casa.</p>
         </div>
-        <div class="why-grid">
-            <div class="why-card fade-in">
-                <div class="why-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                    </svg>
-                </div>
-                <h3>Praticidade</h3>
-                <p>Tudo em um só lugar, sem complicação.</p>
+        <div class="product-grid">
+          <article class="product-card reveal" id="secao-criancas">
+            <div class="product-art art-kids">
+              <div class="mini-book kids"><span class="mini-label">Kit criativo</span>
+                <div class="mini-emoji">🎨</div>
+                <div class="mini-title">HORA DE<span>CRIAR!</span></div><span class="mini-foot">Atividades para
+                  colorir</span>
+              </div><span class="art-sticker">100+ atividades</span>
             </div>
-            <div class="why-card fade-in">
-                <div class="why-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </svg>
-                </div>
-                <h3>Confiabilidade</h3>
-                <p>Indicações e serviços verificados.</p>
+            <div class="product-content"><span class="tag">Para mães e pais</span>
+              <h3>Kit Criatividade Infantil</h3>
+              <p>Atividades e desenhos para colorir em PDF. Desconecte as crianças das telas com mais de <strong>100
+                  atividades pedagógicas</strong>, jogos educativos e desenhos prontos para imprimir.</p>
+              <ul class="benefits">
+                <li>Estimula coordenação motora e concentração.</li>
+                <li>Impressão ilimitada em casa: pague uma vez e use sempre.</li>
+                <li>Acesso vitalício e imediato no celular.</li>
+              </ul>
+              <div class="price-row">
+                <div><span class="old-price">De R$ 47,00</span><span class="price-label">Por apenas</span></div><strong
+                  class="new-price">R$ 19,90</strong><span class="installment">ou 2x de R$ 9,95</span>
+              </div>
+              <a class="product-cta" href="#" data-checkout="kids">📥 BAIXAR KIT INFANTIL AGORA <span>→</span></a><span
+                class="instant-note"><b>●</b> Pagamento seguro · Entrega digital</span>
             </div>
-            <div class="why-card fade-in">
-                <div class="why-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                </div>
-                <h3>Comunidade</h3>
-                <p>Moradores sempre conectados.</p>
+          </article>
+
+          <article class="product-card reveal" id="secao-planner">
+            <div class="product-art art-planner">
+              <div class="mini-book planner"><span class="mini-label">Planner da família</span>
+                <div class="mini-emoji">📊</div>
+                <div class="mini-title">PLANEJE<span>COM CALMA.</span></div><span class="mini-foot">Orçamento &
+                  rotina</span>
+              </div><span class="art-sticker">Sua rotina em ordem</span>
             </div>
-            <div class="why-card fade-in">
-                <div class="why-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z" />
-                        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
-                    </svg>
-                </div>
-                <h3>Qualidade de vida</h3>
-                <p>Mais tempo para o que realmente importa.</p>
+            <div class="product-content"><span class="tag teal">Organização do lar</span>
+              <h3>Planejador Financeiro &amp; Rotina</h3>
+              <p>Tenha controle das contas, compras do mês e metas familiares com um planner prático, bonito e fácil de
+                usar no celular, tablet ou impresso.</p>
+              <ul class="benefits">
+                <li>Acompanhe despesas diárias e fixas sem estresse.</li>
+                <li>Visual aesthetic e intuitivo, fácil de preencher.</li>
+                <li>Compatível com GoodNotes, Notability ou impressão A4.</li>
+              </ul>
+              <div class="price-row">
+                <div><span class="old-price">De R$ 59,00</span><span class="price-label">Por apenas</span></div><strong
+                  class="new-price">R$ 24,90</strong>
+              </div>
+              <a class="product-cta" href="#" data-checkout="planner">📊 GARANTIR MEU PLANNER <span>→</span></a><span
+                class="instant-note"><b>●</b> Pagamento seguro · Entrega digital</span>
             </div>
+          </article>
+
+          <article class="product-card reveal" id="secao-croche">
+            <div class="product-art art-crochet">
+              <div class="mini-book crochet"><span class="mini-label">Guia passo a passo</span>
+                <div class="mini-emoji">🧶</div>
+                <div class="mini-title">ARTE EM<span>CROCHÊ.</span></div><span class="mini-foot">Do zero ao
+                  avançado</span>
+              </div><span class="art-sticker">Crie & empreenda</span>
+            </div>
+            <div class="product-content"><span class="tag green">Hobby &amp; renda extra</span>
+              <h3>Guia Definitivo do Crochê</h3>
+              <p>Aprenda do zero ao avançado a criar peças para decorar sua casa, presentear ou vender, com gráficos
+                fáceis e tutoriais ilustrados.</p>
+              <ul class="benefits">
+                <li>Receitas e gráficos explicativos passo a passo.</li>
+                <li>Uma atividade manual para desacelerar e relaxar.</li>
+                <li>Bônus: guia de precificação para quem deseja vender.</li>
+              </ul>
+              <div class="price-row">
+                <div><span class="old-price">De R$ 67,00</span><span class="price-label">Por apenas</span></div><strong
+                  class="new-price">R$ 29,90</strong>
+              </div>
+              <a class="product-cta" href="#" data-checkout="crochet">🧶 QUERO APRENDER CROCHÊ <span>→</span></a><span
+                class="instant-note"><b>●</b> Pagamento seguro · Entrega digital</span>
+            </div>
+          </article>
+
+          <article class="product-card reveal" id="secao-receitas">
+            <div class="product-art art-recipes">
+              <div class="mini-book recipes"><span class="mini-label">Cozinha global</span>
+                <div class="mini-emoji">🍲</div>
+                <div class="mini-title">SABOR<span>EM CASA.</span></div><span class="mini-foot">Receitas práticas</span>
+              </div><span class="art-sticker">Pronto em até 30 min</span>
+            </div>
+            <div class="product-content"><span class="tag gold">Gastronomia rápida</span>
+              <h3>Cozinha Global em Casa</h3>
+              <p>Surpreenda sua família com pratos internacionais fáceis de preparar, usando ingredientes acessíveis do
+                supermercado local.</p>
+              <ul class="benefits">
+                <li>Pratos prontos em até 30 minutos.</li>
+                <li>Ingredientes fáceis de encontrar em João Pessoa.</li>
+                <li>Passo a passo ilustrado e simplificado.</li>
+              </ul>
+              <div class="price-row">
+                <div><span class="old-price">De R$ 39,00</span><span class="price-label">Por apenas</span></div><strong
+                  class="new-price">R$ 14,90</strong>
+              </div>
+              <a class="product-cta" href="#" data-checkout="recipes">🍽️ BAIXAR LIVRO DE RECEITAS
+                <span>→</span></a><span class="instant-note"><b>●</b> Pagamento seguro · Entrega digital</span>
+            </div>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- TESTIMONIALS SECTION -->
-    <section class="testimonials-section">
-        <div class="testimonials-header fade-in">
-            <div class="section-line" style="background: var(--accent-green);"></div>
-            <h2>O que dizem os moradores</h2>
-            <p>Histórias reais de quem já usa o ParkCowboy.</p>
-            <button class="btn-light">
-                Ver mais depoimentos
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </button>
+    <section class="trust-section" id="como-funciona">
+      <div class="container">
+        <div class="trust-heading reveal"><span class="section-kicker">Simples do início ao fim</span>
+          <h2>Escolha, confirme e aproveite.</h2>
+          <p>Uma experiência digital prática para você começar a usar seu conteúdo sem complicação.</p>
         </div>
-        <div class="testimonials-slider fade-in">
-            <div class="slider-controls">
-                <button class="slider-btn" onclick="slideTestimonials(-1)">‹</button>
-                <button class="slider-btn" onclick="slideTestimonials(1)">›</button>
+        <div class="trust-grid reveal">
+          <div class="trust-item"><span class="icon">🔒</span>
+            <div><strong>Compra segura</strong>
+              <p>Pagamento com confirmação.</p>
             </div>
-            <div class="testimonials-track" id="testimonialsTrack">
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar">
-                        <svg width="48" height="48" viewBox="0 0 48 48">
-                            <circle cx="24" cy="24" r="24" fill="#e8d5c4" />
-                            <circle cx="24" cy="18" r="8" fill="#c4956a" />
-                            <path d="M10 42c0-8 6-14 14-14s14 6 14 14" fill="#c4956a" />
-                        </svg>
-                    </div>
-                    <blockquote>"O site me ajudou a encontrar um ótimo profissional de limpeza aqui no condomínio. Super
-                        prático!"</blockquote>
-                    <div class="author-name">Dayse</div>
-                    <div class="author-role">Corretora de imóveis</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar">
-                        <svg width="48" height="48" viewBox="0 0 48 48">
-                            <circle cx="24" cy="24" r="24" fill="#d5e0e8" />
-                            <circle cx="24" cy="18" r="8" fill="#6a8fa4" />
-                            <path d="M10 42c0-8 6-14 14-14s14 6 14 14" fill="#6a8fa4" />
-                        </svg>
-                    </div>
-                    <blockquote>"Comprei e vendi alguns itens no mercado local. Foi rápido, seguro e muito fácil de
-                        usar."</blockquote>
-                    <div class="author-name">Rafael S.</div>
-                    <div class="author-role">Morador do Park Cowboy</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar">
-                        <svg width="48" height="48" viewBox="0 0 48 48">
-                            <circle cx="24" cy="24" r="24" fill="#e8d5d5" />
-                            <circle cx="24" cy="18" r="8" fill="#a46a6a" />
-                            <path d="M10 42c0-8 6-14 14-14s14 6 14 14" fill="#a46a6a" />
-                        </svg>
-                    </div>
-                    <blockquote>"O kit organizador é incrível! Uso todo mês e já me ajudou muito na rotina da casa."
-                    </blockquote>
-                    <div class="author-name">Carla T.</div>
-                    <div class="author-role">Moradora do Park Cowboy</div>
-                </div>
+          </div>
+          <div class="trust-item"><span class="icon">⚡</span>
+            <div><strong>Entrega digital</strong>
+              <p>Receba no e-mail ou WhatsApp.</p>
             </div>
+          </div>
+          <div class="trust-item"><span class="icon">💚</span>
+            <div><strong>Pagamento prático</strong>
+              <p>Pix com aprovação instantânea.</p>
+            </div>
+          </div>
         </div>
+        <div class="payment-panel reveal"><span class="pix">PIX</span>
+          <div class="cards"><span>VISA</span><span>MASTER</span><span>ELO</span><span>AMEX</span></div>
+        </div>
+        <div class="testimonial reveal">
+          <div class="stars">★★★★★</div>
+          <blockquote>“Adorei as atividades de colorir! Meu filho passou a tarde toda entretido sem pedir o celular. O
+            envio via Pix foi instantâneo, caiu no meu WhatsApp na hora. Super recomendo para as mães aqui do
+            condomínio!”</blockquote>
+          <footer>— Mariana S.<span>Moradora da região de João Pessoa</span></footer>
+        </div>
+      </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-disclaimer">
-            <p><strong>Aviso Legal:</strong> Este é um site particular e independente. <strong>Não possui nenhum vínculo
-                    oficial</strong> com a Administração ou o Síndico do Condomínio Park Cowboy. <br>Todo o conteúdo é
-                criado por um morador, para facilitar a vida dos moradores.</p>
+    <section class="final-cta" id="contato">
+      <div class="container">
+        <div class="final-panel reveal">
+          <div>
+            <h2>Mais leveza para sua rotina começa com uma escolha.</h2>
+            <p>Encontre o material ideal para sua família e aproveite no seu tempo.</p>
+          </div><a class="button-primary" href="#solucoes">Explorar soluções <span>→</span></a>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <div class="footer-content">
-            <div class="footer-logo">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                        <polyline points="9 22 9 12 15 12 15 22" />
-                    </svg>
-                </div>
-                <div class="logo-text">
-                    <div class="brand">Park<span>Cowboy</span></div>
-                    <div class="tagline">Criado por um morador, para moradores</div>
-                </div>
-            </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <a class="brand" href="#inicio"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 11.5 12 4l8 7.5" />
+              <path d="M6.5 10v9h11v-9M9.5 19v-5.5h5V19" />
+            </svg></span><span>park cowboy <small>digital store</small></span></a>
+        <div class="footer-contact">Dúvidas sobre o download?<br /><a href="#contato" data-whatsapp>Fale conosco no
+            WhatsApp ↗</a><br /><span>Atendimento: Seg a Sex, 9h às 18h</span></div>
+      </div>
+      <div class="legal"><span>© 2026 Park Cowboy Digital Store. Todos os direitos reservados.</span><span
+          class="legal-links"><a href="#contato">Política de Privacidade</a><a href="#contato">Termos de Uso</a></span>
+      </div>
+    </div>
+  </footer>
+  <a class="floating-help" href="#contato" data-whatsapp aria-label="Fale conosco no WhatsApp">✆</a>
+  <div class="toast" role="status" aria-live="polite"></div>
 
-            <ul class="footer-links">
-                <li><a href="#">Início</a></li>
-                <li><a href="#features">Serviços</a></li>
-                <li><a href="#products">Produtos Digitais</a></li>
-                <li><a href="#why">Sobre</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
+  <script>
+    /* CONFIGURAÇÃO ANTES DE PUBLICAR:
+       1) Insira os links reais de checkout em CHECKOUT_URLS.
+       2) Substitua o número de exemplo pelo WhatsApp comercial com código do país e DDD.
+       3) Atualize CNPJ, políticas e dados legais com informações reais da operação.
+    */
+    const CHECKOUT_URLS = { kids: '', planner: '', crochet: '', recipes: '' };
+    const WHATSAPP_NUMBER = '83994089906'; // Número que constava no HTML original; confirmar antes de publicar.
 
-            <div class="footer-social">
-                <a href="#" aria-label="Instagram">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                    </svg>
-                </a>
-                <a href="#" aria-label="WhatsApp">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                    </svg>
-                </a>
-            </div>
+    const toast = document.querySelector('.toast');
+    let toastTimer;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3600);
+    }
 
-            <div class="footer-copy">
-                <div class="site-url">ParkCowboy.com.br</div>
-                <div class="copy-text">Um projeto independente.</div>
-            </div>
-        </div>
-    </footer>
+    document.querySelectorAll('[data-checkout]').forEach(link => {
+      link.addEventListener('click', event => {
+        const key = link.dataset.checkout;
+        const url = CHECKOUT_URLS[key];
+        if (url) { link.href = url; link.target = '_blank'; link.rel = 'noopener'; return; }
+        event.preventDefault();
+        showToast('O link de pagamento deste produto ainda precisa ser configurado.');
+      });
+    });
 
-    <script>
-        // Mobile Nav Toggle
-        function toggleMobileNav() {
-            document.getElementById('mobileNav').classList.toggle('open');
+    document.querySelectorAll('[data-whatsapp]').forEach(link => {
+      link.addEventListener('click', event => {
+        if (!WHATSAPP_NUMBER || WHATSAPP_NUMBER === '5583999999999') {
+          event.preventDefault();
+          showToast('Configure o número comercial do WhatsApp antes de publicar esta página.');
+          return;
         }
+        link.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+        link.target = '_blank';
+        link.rel = 'noopener';
+      });
+    });
 
-        // Testimonials Slider
-        let currentSlide = 0;
-        const track = document.getElementById('testimonialsTrack');
-
-        function slideTestimonials(direction) {
-            const cards = track.querySelectorAll('.testimonial-card');
-            const cardWidth = cards[0].offsetWidth + 20;
-            const maxSlide = cards.length - Math.floor(track.parentElement.offsetWidth / cardWidth);
-
-            currentSlide += direction;
-            if (currentSlide < 0) currentSlide = 0;
-            if (currentSlide > maxSlide) currentSlide = maxSlide;
-
-            track.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
         }
-
-        // Scroll Animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Navbar active link
-        document.querySelectorAll('.navbar-links a').forEach(link => {
-            link.addEventListener('click', function (e) {
-                document.querySelectorAll('.navbar-links a').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+  </script>
 </body>
 
 </html>
