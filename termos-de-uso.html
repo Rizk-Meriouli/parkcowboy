@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Termos de Uso da Park Cowboy Digital: regras de navegação, compra, pagamento, entrega e utilização dos produtos digitais. Iniciativa independente, sem vínculo oficial com a administração do Condomínio Park Cowboy." />
+  <meta name="theme-color" content="#103e43" />
+  <title>Termos de Uso — Park Cowboy Digital</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='2' y='2' width='44' height='44' rx='14' fill='%23f1785b'/%3E%3Cg fill='none' stroke='%23fffefa' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 23 24 10l14 13'/%3E%3Cpath d='M14 21v16h20V21M20 37V27h8v10'/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #15383b;
+      --ink-2: #254d50;
+      --teal: #103e43;
+      --teal-2: #17616a;
+      --coral: #f1785b;
+      --coral-deep: #df6349;
+      --mint: #a8d8bd;
+      --mint-bright: #64c69b;
+      --paper: #fbf8f1;
+      --paper-2: #f3eee4;
+      --white: #fffefa;
+      --muted: #667775;
+      --line: rgba(21, 56, 59, .11);
+      --shadow: 0 22px 60px rgba(16, 62, 67, .11);
+      --shadow-deep: 0 30px 70px rgba(10, 43, 47, .24);
+      --radius: 26px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image: radial-gradient(rgba(16, 62, 67, .055) .7px, transparent .7px);
+      background-size: 19px 19px;
+      opacity: .34;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .announcement {
+      background: var(--teal);
+      color: rgba(255, 255, 255, .9);
+      text-align: center;
+      padding: 9px 18px;
+      font-size: 12px;
+      letter-spacing: .035em;
+    }
+    .announcement strong { color: #bfe9d0; font-weight: 800; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 248, 241, .88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(21, 56, 59, .08);
+    }
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-family: Manrope, sans-serif;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      font-size: 17px;
+    }
+    .brand-mark {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      color: white;
+      border-radius: 13px;
+      background: var(--coral);
+      box-shadow: 0 7px 16px rgba(241, 120, 91, .28);
+      transform: rotate(-5deg);
+      flex: 0 0 auto;
+    }
+    .brand-mark svg { width: 22px; height: 22px; }
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font: 600 9px 'DM Sans', sans-serif;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: -3px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 29px;
+      color: #536765;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover { color: var(--coral-deep); }
+    .nav-cta {
+      background: var(--teal);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: 0 8px 18px rgba(16, 62, 67, .16);
+      transition: .2s;
+    }
+    .nav-cta:hover { background: var(--teal-2); transform: translateY(-2px); }
+    .hero {
+      position: relative;
+      padding: 68px 0 48px;
+      isolation: isolate;
+      overflow: hidden;
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      z-index: -1;
+    }
+    .hero::before {
+      width: 530px;
+      height: 530px;
+      right: -120px;
+      top: -190px;
+      background: radial-gradient(circle, rgba(168, 216, 189, .42), rgba(168, 216, 189, 0) 68%);
+    }
+    .hero::after {
+      width: 430px;
+      height: 430px;
+      left: -220px;
+      bottom: -170px;
+      background: radial-gradient(circle, rgba(241, 120, 91, .15), transparent 70%);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--teal-2);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 10px;
+      font-weight: 800;
+      margin-bottom: 19px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 25px;
+      height: 2px;
+      background: var(--coral);
+      border-radius: 2px;
+    }
+    h1, h2, h3 { font-family: Manrope, sans-serif; }
+    h1 {
+      color: var(--teal);
+      font-size: clamp(39px, 5vw, 64px);
+      line-height: 1.08;
+      letter-spacing: -.065em;
+      max-width: 820px;
+    }
+    h1 em { color: var(--coral); font-style: normal; }
+    .hero-copy {
+      color: #60716e;
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 760px;
+      margin: 22px 0 27px;
+    }
+    .independent-note {
+      margin-top: 28px;
+      padding: 19px 21px;
+      border: 1px solid rgba(23, 97, 106, .14);
+      border-left: 4px solid var(--coral);
+      border-radius: 15px;
+      background: rgba(255, 254, 250, .78);
+      box-shadow: 0 12px 30px rgba(16, 62, 67, .05);
+      max-width: 900px;
+    }
+    .independent-note strong {
+      display: block;
+      color: var(--teal);
+      font: 800 13px Manrope, sans-serif;
+      margin-bottom: 5px;
+    }
+    .independent-note p { color: #60716e; font-size: 13px; line-height: 1.75; }
+    .content-wrap { padding: 8px 0 82px; }
+    .content-layout {
+      display: grid;
+      grid-template-columns: 245px minmax(0, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+    .toc {
+      position: sticky;
+      top: 105px;
+      background: rgba(255, 254, 250, .78);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 12px 32px rgba(16, 62, 67, .045);
+    }
+    .toc h2 { color: var(--teal); font-size: 13px; margin-bottom: 12px; }
+    .toc ol { padding-left: 18px; color: #71807d; font-size: 11px; line-height: 1.55; }
+    .toc li { margin: 7px 0; }
+    .toc a:hover { color: var(--coral-deep); }
+    .policy {
+      background: var(--white);
+      border: 1px solid rgba(21, 56, 59, .075);
+      border-radius: 24px;
+      padding: clamp(24px, 4vw, 48px);
+      box-shadow: var(--shadow);
+    }
+    .policy-section {
+      padding: 0 0 26px;
+      margin-bottom: 26px;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 110px;
+    }
+    .policy-section:last-of-type { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+    .section-number {
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      color: var(--teal-2);
+      background: #e8f3f1;
+      font: 800 11px Manrope, sans-serif;
+      margin-bottom: 10px;
+    }
+    .policy h2 {
+      color: var(--teal);
+      font-size: 20px;
+      letter-spacing: -.035em;
+      line-height: 1.3;
+      margin-bottom: 11px;
+    }
+    .policy p { color: #61716d; font-size: 13px; margin: 9px 0; }
+    .policy ul { padding-left: 21px; margin: 10px 0 12px; color: #61716d; font-size: 13px; }
+    .policy li { padding-left: 3px; margin: 6px 0; }
+    .policy strong { color: var(--ink-2); }
+    .contact-card {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 16px;
+      background: #f1f7f2;
+      border: 1px solid rgba(100, 198, 155, .25);
+    }
+    .contact-card p { margin: 5px 0; }
+    .contact-card a {
+      color: var(--teal-2);
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .last-updated {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #84918b;
+      font-size: 10px;
+      margin-top: 25px;
+    }
+    .last-updated::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint-bright);
+    }
+    .footer {
+      padding: 30px 0 28px;
+      border-top: 1px solid var(--line);
+      background: #f7f2e9;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    .footer-contact { color: #647570; font-size: 11px; text-align: right; }
+    .footer-contact a { color: var(--teal-2); font-weight: 800; }
+    .footer-contact a:hover { color: var(--coral-deep); }
+    .legal {
+      padding-top: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: #929b94;
+      font-size: 9px;
+    }
+    .legal-links { display: flex; gap: 15px; }
+    .legal a { text-decoration: underline; text-underline-offset: 3px; }
+    .floating-help {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #24b879;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+      z-index: 60;
+      box-shadow: 0 10px 28px rgba(20, 130, 85, .32);
+      border: 3px solid rgba(255, 255, 255, .85);
+      transition: transform .2s;
+    }
+    .floating-help:hover { transform: translateY(-4px) scale(1.04); }
+    @media (max-width: 1000px) {
+      .content-layout { grid-template-columns: 220px minmax(0, 1fr); gap: 18px; }
+    }
+    @media (max-width: 850px) {
+      .content-layout { grid-template-columns: 1fr; }
+      .toc { position: static; }
+      .toc ol { columns: 2; column-gap: 28px; }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 34px, var(--max)); }
+      .nav { height: 68px; }
+      .nav-links { display: none; }
+      .nav-cta { padding: 10px 13px; font-size: 10px; }
+      .hero { padding: 52px 0 42px; }
+      .hero-copy { font-size: 14px; }
+      .content-wrap { padding-bottom: 58px; }
+      .policy { border-radius: 19px; }
+      .footer-top { align-items: flex-start; flex-direction: column; }
+      .footer-contact { text-align: left; }
+      .legal { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 430px) {
+      .announcement { font-size: 10px; }
+      .brand { font-size: 15px; }
+      .brand-mark { width: 35px; height: 35px; }
+      h1 { font-size: 39px; }
+      .toc ol { columns: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">📍 Exclusivo para moradores do <strong>Park Cowboy</strong> e região &nbsp;·&nbsp; Entrega digital no seu WhatsApp ou e-mail</div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Park Cowboy Digital — início">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 11.5 12 4l8 7.5" />
+          <path d="M6.5 10v9h11v-9M9.5 19v-5.5h5V19" />
+        </svg></span>
+        <span>park cowboy <small>digital store</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="index.html#solucoes">Soluções</a>
+        <a href="index.html#como-funciona">Como funciona</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a class="nav-cta" href="index.html#solucoes">ENCONTRE SUA SOLUÇÃO <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Regras claras para uma boa experiência</span>
+        <h1>Termos de <em>Uso.</em></h1>
+        <p class="hero-copy">Estes Termos explicam as condições de acesso ao site Park Cowboy Digital e de compra e utilização dos produtos digitais oferecidos nesta página. Leia com atenção antes de realizar um pedido.</p>
+        <div class="independent-note">
+          <strong>Uma iniciativa independente, de morador para moradores.</strong>
+          <p>A Park Cowboy Digital é um projeto independente e não possui vínculo oficial, parceria institucional, associação, representação ou relação administrativa com a administração do Condomínio Park Cowboy. A loja não representa oficialmente o condomínio, seu síndico ou qualquer entidade responsável por sua gestão.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-wrap">
+      <div class="container content-layout">
+        <aside class="toc" aria-label="Índice dos Termos de Uso">
+          <h2>Nesta página</h2>
+          <ol>
+            <li><a href="#aceitacao">Aceitação e escopo</a></li>
+            <li><a href="#independencia">Natureza independente</a></li>
+            <li><a href="#produtos">Produtos digitais</a></li>
+            <li><a href="#ofertas">Preços e ofertas</a></li>
+            <li><a href="#compra">Pedido e pagamento</a></li>
+            <li><a href="#entrega">Confirmação e entrega</a></li>
+            <li><a href="#arrependimento">Cancelamento e reembolso</a></li>
+            <li><a href="#uso">Uso permitido dos materiais</a></li>
+            <li><a href="#responsabilidade">Responsabilidades e limitações</a></li>
+            <li><a href="#disponibilidade">Disponibilidade e alterações</a></li>
+            <li><a href="#privacidade">Privacidade e dados</a></li>
+            <li><a href="#lei">Legislação e contato</a></li>
+          </ol>
+        </aside>
+
+        <article class="policy">
+          <section class="policy-section" id="aceitacao">
+            <span class="section-number">01</span>
+            <h2>Aceitação e escopo destes Termos</h2>
+            <p>Ao acessar este site, navegar por suas páginas ou realizar uma compra, você declara que leu e compreendeu estes Termos de Uso. Se não concordar com alguma condição, não utilize o site nem conclua um pedido.</p>
+            <p>Estes Termos se aplicam ao site Park Cowboy Digital e às compras realizadas por meio dos links de checkout disponibilizados nele. Condições específicas exibidas pelo provedor de pagamento também poderão se aplicar à etapa de pagamento.</p>
+            <p>Quando você realiza uma compra como consumidor, estes Termos não eliminam nem restringem os direitos assegurados pela legislação brasileira de proteção ao consumidor.</p>
+          </section>
+
+          <section class="policy-section" id="independencia">
+            <span class="section-number">02</span>
+            <h2>Projeto independente — sem vínculo com o condomínio</h2>
+            <p>A Park Cowboy Digital é uma iniciativa independente, criada de morador para moradores, com a proposta de disponibilizar produtos digitais e conteúdos práticos.</p>
+            <p><strong>Este projeto não é um canal oficial do Condomínio Park Cowboy e não possui vínculo oficial com sua administração.</strong> Não representa o condomínio, o síndico, a administradora, o conselho ou qualquer entidade responsável pela gestão condominial. A administração do condomínio não é responsável pelos produtos, preços, pagamentos, atendimento, entregas ou compromissos assumidos pela loja.</p>
+            <p>A referência ao nome Park Cowboy serve para identificar o público e o contexto da iniciativa. Não deve ser interpretada como indicação de aprovação, patrocínio, parceria ou endosso institucional.</p>
+          </section>
+
+          <section class="policy-section" id="produtos">
+            <span class="section-number">03</span>
+            <h2>Produtos digitais e características</h2>
+            <p>Os itens anunciados na loja são produtos digitais, como materiais em formato eletrônico, guias, planejadores e conteúdos para consulta ou utilização pessoal.</p>
+            <p>Por serem digitais, os produtos não envolvem, salvo indicação expressa na oferta, envio de mercadoria física. Antes de comprar, confira a descrição, o conteúdo apresentado, o formato informado e o preço do produto escolhido.</p>
+            <p>Imagens, capas e prévias exibidas no site têm finalidade ilustrativa e de apresentação. O conteúdo efetivamente disponibilizado corresponde à descrição da oferta do produto adquirido.</p>
+            <p>Salvo indicação expressa em contrário, a compra não inclui consultoria individual, acompanhamento profissional, suporte contínuo, atualização futura ou serviço personalizado.</p>
+          </section>
+
+          <section class="policy-section" id="ofertas">
+            <span class="section-number">04</span>
+            <h2>Preços, informações e ofertas</h2>
+            <p>Os preços e as condições comerciais são apresentados na página do produto e/ou no checkout antes da confirmação do pagamento. O valor final, eventuais encargos e meios de pagamento disponíveis devem ser conferidos no ambiente de checkout.</p>
+            <p>Buscamos manter as descrições, imagens e preços atualizados. Se houver divergência material ou erro evidente em uma oferta, entre em contato antes de concluir a compra para que a situação seja verificada.</p>
+            <p>Ofertas e preços poderão ser modificados para compras futuras. Uma alteração posterior não modifica, por si só, as condições de um pedido já confirmado, respeitados os direitos legais do consumidor.</p>
+          </section>
+
+          <section class="policy-section" id="compra">
+            <span class="section-number">05</span>
+            <h2>Pedido e pagamento</h2>
+            <p>Para comprar, selecione o produto desejado e acesse o link de checkout indicado. O processamento do pagamento é realizado em ambiente fornecido pela InfinitePay, conforme as condições, os meios de pagamento e os procedimentos apresentados por esse provedor.</p>
+            <p>O pedido depende da conclusão do fluxo de pagamento e da confirmação correspondente pelo provedor. A simples abertura do checkout, o preenchimento de dados ou o envio de comprovante não significam, isoladamente, que o pagamento foi aprovado.</p>
+            <p>Não envie senhas, códigos de autenticação ou dados completos de cartão por WhatsApp, e-mail ou mensagens. Utilize somente o ambiente de pagamento indicado no site e confira se está no checkout correto antes de inserir informações.</p>
+            <p>Em caso de dúvida ou divergência no pagamento, entre em contato e informe os dados mínimos necessários para localizar o pedido. Nunca compartilhe dados financeiros sigilosos no atendimento.</p>
+          </section>
+
+          <section class="policy-section" id="entrega">
+            <span class="section-number">06</span>
+            <h2>Confirmação do pagamento e entrega digital</h2>
+            <p>Após a confirmação do pagamento, o produto digital será disponibilizado ou encaminhado pelo canal de entrega informado na oferta ou combinado no atendimento, que poderá incluir WhatsApp ou e-mail.</p>
+            <p>Na fase atual da loja, a entrega poderá ser realizada manualmente. Portanto, a confirmação do pagamento não significa necessariamente que haverá download automático e imediato na própria página de checkout.</p>
+            <p>Para facilitar a entrega, confira se o contato informado está correto e se você consegue receber mensagens ou arquivos pelo canal utilizado. Caso não receba o produto após a confirmação, entre em contato pelo WhatsApp indicado ao final desta página.</p>
+            <p>Não divulgamos nestes Termos um prazo fixo de entrega que não esteja expressamente indicado na oferta. Se houver um prazo específico para determinado produto ou campanha, prevalecerá a informação apresentada ao consumidor antes da compra.</p>
+          </section>
+
+          <section class="policy-section" id="arrependimento">
+            <span class="section-number">07</span>
+            <h2>Cancelamento, direito de arrependimento e reembolso</h2>
+            <p>As solicitações de cancelamento e reembolso serão analisadas de acordo com a legislação brasileira aplicável, especialmente o Código de Defesa do Consumidor (Lei nº 8.078/1990), e com as condições do pedido.</p>
+            <p>Nas compras realizadas fora do estabelecimento comercial, o consumidor poderá exercer o direito de arrependimento no prazo e nas condições previstos no artigo 49 do Código de Defesa do Consumidor, quando aplicável. A natureza digital do produto, o acesso ou o recebimento do arquivo não são apresentados aqui como renúncia automática a direitos legais.</p>
+            <p>Se desejar cancelar uma compra, solicitar reembolso ou comunicar um problema com o produto, entre em contato pelo WhatsApp indicado nesta página e informe o pedido. A solicitação será encaminhada para análise e tratada conforme os direitos do consumidor e as regras aplicáveis ao meio de pagamento.</p>
+            <p>Quando o pagamento tiver sido processado pela InfinitePay, o procedimento de estorno poderá depender também dos fluxos e prazos operacionais do provedor e da instituição financeira ou meio de pagamento utilizado.</p>
+          </section>
+
+          <section class="policy-section" id="uso">
+            <span class="section-number">08</span>
+            <h2>Uso permitido dos produtos e materiais</h2>
+            <p>Salvo quando a própria oferta indicar uma licença diferente, os materiais adquiridos são destinados ao uso pessoal do comprador.</p>
+            <p>Sem autorização prévia e expressa do titular dos direitos, não é permitido:</p>
+            <ul>
+              <li>Revender, sublicenciar, distribuir ou disponibilizar publicamente o arquivo ou o conteúdo;</li>
+              <li>Compartilhar cópias com terceiros, grupos, comunidades ou plataformas de arquivos;</li>
+              <li>Remover avisos de autoria ou de direitos aplicáveis;</li>
+              <li>Utilizar o material para criar uma oferta concorrente baseada na reprodução ou redistribuição do conteúdo.</li>
+            </ul>
+            <p>A compra concede apenas o direito de utilização compatível com a finalidade do produto e não transfere a propriedade intelectual do material. Nada nesta seção restringe usos permitidos pela legislação.</p>
+          </section>
+
+          <section class="policy-section" id="responsabilidade">
+            <span class="section-number">09</span>
+            <h2>Responsabilidades e limitações</h2>
+            <p>O comprador é responsável por verificar se dispõe de dispositivo, aplicativo e condições técnicas compatíveis com o formato informado na oferta, bem como por manter seus canais de contato acessíveis para receber a entrega.</p>
+            <p>Os materiais são disponibilizados para fins informativos, educativos ou de organização pessoal, conforme a descrição de cada produto. Salvo indicação expressa, não substituem aconselhamento profissional individual, nem constituem garantia de resultado financeiro, comercial, educacional ou pessoal.</p>
+            <p>Empregamos esforços razoáveis para manter o site acessível e as informações corretas, mas podem ocorrer interrupções temporárias por manutenção, falhas de conexão, indisponibilidade de fornecedores ou eventos fora do nosso controle.</p>
+            <p>Nada nestes Termos exclui ou limita responsabilidades que não possam ser afastadas por lei, nem os direitos assegurados ao consumidor pela legislação aplicável.</p>
+          </section>
+
+          <section class="policy-section" id="disponibilidade">
+            <span class="section-number">10</span>
+            <h2>Disponibilidade do site e alterações</h2>
+            <p>O site e seus produtos poderão passar por atualizações, ajustes de conteúdo, correções ou períodos de indisponibilidade. Poderemos retirar ou modificar ofertas para novas compras, sem prejuízo dos direitos relativos a pedidos já confirmados.</p>
+            <p>Estes Termos poderão ser atualizados para refletir mudanças na operação da loja, nos serviços utilizados ou na legislação. A versão vigente ficará disponível nesta página, com a respectiva data de atualização.</p>
+          </section>
+
+          <section class="policy-section" id="privacidade">
+            <span class="section-number">11</span>
+            <h2>Privacidade e tratamento de dados</h2>
+            <p>O tratamento de dados pessoais relacionado à navegação, ao atendimento e às compras é explicado na nossa <a href="politica-de-privacidade.html" style="color:var(--teal-2);font-weight:800;text-decoration:underline;text-underline-offset:3px;">Política de Privacidade</a>, que deve ser lida em conjunto com estes Termos.</p>
+            <p>Ao utilizar canais de terceiros, como o checkout de pagamento ou o WhatsApp, você também estará sujeito às condições e políticas desses respectivos serviços.</p>
+          </section>
+
+          <section class="policy-section" id="lei">
+            <span class="section-number">12</span>
+            <h2>Legislação aplicável e contato</h2>
+            <p>Estes Termos são interpretados de acordo com as leis da República Federativa do Brasil, respeitadas as normas de proteção ao consumidor e as regras legais de competência aplicáveis.</p>
+            <p>Se tiver dúvidas sobre estes Termos, sobre um pedido ou sobre a utilização de um produto, entre em contato pelo canal abaixo:</p>
+            <div class="contact-card">
+              <p><strong>Park Cowboy Digital — Projeto independente</strong></p>
+              <p>WhatsApp: <a href="https://wa.me/5583994089906" target="_blank" rel="noopener noreferrer">+55 (83) 99408-9906</a></p>
+              <p><strong>Iniciativa independente, de morador para moradores. Sem vínculo oficial com a administração do Condomínio Park Cowboy.</strong></p>
+            </div>
+          </section>
+
+          <div class="last-updated">Última atualização: 31 de outubro de 2026</div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <a class="brand" href="index.html" aria-label="Park Cowboy Digital — início">
+          <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 11.5 12 4l8 7.5" />
+            <path d="M6.5 10v9h11v-9M9.5 19v-5.5h5V19" />
+          </svg></span>
+          <span>park cowboy <small>digital store</small></span>
+        </a>
+        <div class="footer-contact">Dúvidas sobre o download?<br /><a href="https://wa.me/5583994089906" target="_blank" rel="noopener noreferrer">Fale conosco no WhatsApp ↗</a><br /><span>Atendimento: Seg a Sex, 9h às 18h</span></div>
+      </div>
+      <div class="legal">
+        <span>© 2026 Park Cowboy Digital Store. Todos os direitos reservados.</span>
+        <span class="legal-links"><a href="index.html">Página inicial</a><a href="politica-de-privacidade.html">Política de Privacidade</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating-help" href="https://wa.me/5583994089906" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco no WhatsApp">✆</a>
+</body>
+</html>
